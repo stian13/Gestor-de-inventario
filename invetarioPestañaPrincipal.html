@@ -3,48 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
     <title>Inicias Sesion</title>
+    <link rel="stylesheet" href="./Styles/stylePestañaPrincipal.css">
 </head>
 <body>
     <header>
-        <section>
-            <div><!--logo alcaldia-->
-                <img src="" alt="">
+        <section class="Container-cabecera">
+            <div ><!--logo alcaldia-->
+                <img src="./Assets/Img/planeta-rica-escudo.png" alt="" class="img-alcaldia">
             </div>
 
-            <h1>Sistema de inventarios</h1>
+                <h1>Sistema de inventarios</h1>
 
             <div><!--logo alcaldia-->
-                <img src="" alt="">
+                <img src="./Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
             </div>
         </section>
     </header>
     <main>
-        <div>
-            <section>
-                <h3>Inventario de Computadoras</h3>
-                <div>
-                    <img src="" alt="">
+        <div class="container-menu-principal">
+            <section class="container-menu-principal__card">
+                <h3 class="titulo">Inventario de Computadoras</h3>
+                <div class="conteiner-img-ver">
+                    <img src="./Assets/Img/ordenador-personal (1).png" alt="" class="img-logo-tipo">
                 </div>
             </section>
-            <section>
-                <h3>Inventario de impresoras</h3>
-                <div>
-                    <img src="" alt="">
+            <section class="container-menu-principal__card">
+                <h3 class="titulo">Inventario de impresoras</h3>
+                <div class="conteiner-img-ver">
+                    <img src="./Assets/Img/impresora.png" alt="" class="img-logo-tipo">
                 </div>
             </section>
         </div>
 
-        <div>
-            <div>
-                <!--Boton de agreagar-->
-                <img src="" alt="">
-            </div>
-            <div>
+        <div class="boton-agregar">
+            <div class="boton-agregar__lista-opciones">
                 <p>Agregar Impresora</p>
                 <p>Agregar computador</p>
                 <p>Agreagar Oficina</p>
             </div>
+            <img src="./Assets/Img/boton-agragar.png" alt=""class="boton-agregar__img-agragar">
+            <!--Boton de agreagar-->
         </div>
     </main>
 </body>

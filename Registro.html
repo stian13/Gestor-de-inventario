@@ -4,28 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Styles/stylesInicioSesion.css">
 </head>
 <body>
     <header>
-        <section>
-            <h1>Sistema de inventarios</h1>
+        <section class="titulo-inventario">
+            <h1>Sistema de inventario</h1>
         </section>
     </header>
     <main>
-        <section>
-            <h1>Registro</h1>
-            <form action="">
-                <label for="full_name">Nombre y apellidos</label>
-                <input type="text" name="full_name">
-
-                <label for="nameUser">Nombre usuario</label>
-                <input type="text" name="nameUser">
-
-                <label for="password">Contraseña</label>
-                <input type="password" name="password">
-            
-                <input type="submit" value="Registrar">
-            </form>
+        <section class="container-form">
+            <div class="container-form__card">
+                <h3>Registro</h3>
+                <form action="" class="form-login">
+                    <div>
+                        <label for="full_name">Nombre y apellidos</label>
+                        <input type="text" name="full_name" class="form-login__input">
+                    </div>
+                    <div>
+                        <label for="nameUser">Nombre usuario</label>
+                        <input type="text" name="nameUser" class="form-login__input">
+                    </div>
+                    <div>
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" class="form-login__input">
+                    </div>
+                    <input type="submit" value="Registrar" class="form-login__boton">
+                </form>
+            </div>
         </section>
     </main>
 </body>
