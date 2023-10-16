@@ -1,0 +1,57 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-family: 'Kanit', sans-serif;
+}
+:root{
+    --grisFuerteFondo : #4F4F4F;
+    --blancoGrisaseo : #D9D9D9;
+    --azul : #341BCB;
+    --blanco: #FFFFFF;
+    --size-titulos : 26px;
+}
+body{
+    background-color: var(--grisFuerteFondo);
+}
+
+/*---Cabecera---*/
+
+.titulo-inventario{
+    display: flex;
+    justify-content: center;
+}
+.titulo-inventario h1{
+    color: var(--blanco);
+    padding: 40px 0 40px 0;
+}
+
+/*--- seccion de login y register ---*/
+
+.conteiner-targetas-inicio{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.conteiner-targetas-inicio .targeta{
+    width: 300px;
+    height: 400px;
+    background-color: var(--blancoGrisaseo);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.conteiner-targetas-inicio .targeta img{
+    width: 200px;
+    height: 200px;
+}
+.conteiner-targetas-inicio .targeta h3{
+    color: var(--azul);
+}
