@@ -37,3 +37,99 @@ body{
     margin-top: 10px;
     cursor: pointer;
 }
+/*--- contenedor principal informacion del dispositivo*/
+.main-info-dispositivo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*-- secion informacion dispositivo --*/
+
+
+.info-dispostivo-section{
+    background-color: var(--blancoGrisaseo);
+    width: 900px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.code-dispositivo{
+    display: flex;
+    gap: 50px;
+}
+
+.code-dispositivo p{
+    padding-top: 2px;
+}
+.info-dispostivo-section .info-ubicacion{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.tex-content-info{
+    text-align: center;
+}
+
+.blue-title{
+    color: var(--azul);
+}
+
+/*-- Especificaciones tecnicas del dispisitivo --*/
+
+.especificaciones-tecnicas-content{
+    margin-top: 40px;
+}
+
+.info-tecnica-tex-div {
+    display: flex;
+}
+
+.info-tecnica-tex-div h4{
+    width: 180px;
+}
+
+.info-tecnica-tex-div p{
+    width: 200px;
+}
+
+/*-Linea divisora-*/
+.linea-divisora{
+    margin : 20px 0; 
+}
+/*-- Contenedor informacion de perifericos --*/
+
+.content-perifericos{
+
+}
+
+.periferico{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/*-- Section de notas --*/
+.color-blanco{
+    color: var(--blanco);
+}
+.section-notes{
+    margin-top: 20px;
+    width: 900px;
+}
+.card-note{
+    background-color: var(--blancoGrisaseo);
+    border-radius: 20px;
+    padding: 20px;
+}
+.section-notes .info-basic-nota{
+    display: flex;
+    justify-content: space-around;
+}
+
+.color-gris{
+    color: var(--grisFuerteFondo);
+}
+
+
