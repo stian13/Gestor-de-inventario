@@ -3,80 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Styles/stylesDetallesDispositivos.css">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <section>
-            <div>
-                <img src="" alt=""> <!--Boton volver-->
+        <section class="Container-cabecera">
+            <div ><!--logo alcaldia-->
+                <img src="./Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
             </div>
 
-            <div>Inventario de computadoras-Impresoras-Scanner</div>
-        </section>
-        <div>
-            <img src="" alt=""><!--Boton salir sesion-->
-        </div>
-    </header>
-    <main>
-        <section>
-            <div>
-                <h4>Codigo Inventario</h4>
-                <input type="text">
+                <h1>Formulario de impresora y Sacanner</h1>
+
+            <div><!--logo alcaldia-->
+                <img src="./Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
             </div>
-            <div>
-                <div>
-                    <h4>Nombre Oficina</h4>
-                    <input type="text">
+        </section>
+    <form class="main-info-dispositivo">
+        <section class="info-dispostivo-section">
+            <div class="code-dispositivo">
+                <label class="blue-title">Codigo Inventario</label>
+                <input type="number" name="" id="" class="style-input-general">
+            </div>
+            <div class="info-ubicacion">
+                <div class="tex-content-info">
+                    <h4 class="blue-title" for="tipo-computadora" >Nombre de Oficina</h4>
+                    <select id="tipo-computadora" name="oficina">
+                        <option value="">Recaudo</option>
+                        <option value="">Comercio</option>
+                        <option value="">contaduria</option>
+                    </select>
                 </div>
-                <div>
-                    <h4>Tipo</h4>
-                    <input type="radio" name="" id="">Impresora <br>
-                    <input type="radio" name="" id="">Sacanner <br>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Tipo</h4>
+                    <select id="tipo-computadora" name="tipo-computadora">
+                        <option value="pc-escritorio">scarnner</option>
+                        <option value="todo-en-uno">Impresora</option>
+                        <option value="portatil">Ambos</option>
+                    </select>
                 </div>
-                <div>
-                    <h4>Marca</h4>
-                    <input type="text">
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Marca</h4>
+                    <input type="text" name="" id="" class="style-input-general">
                 </div>
-                <div>
-                    <h4>Modelo</h4>
-                    <input type="text">
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Modelo</h4>
+                    <input type="text" name="" id="" class="style-input-general">
                 </div>
-                <div>
-                    <h4>S/N Equipo</h4>
-                    <input type="text">
+                <div class="tex-content-info">
+                    <h4 class="blue-title">S/N Equipo</h4>
+                    <input type="text" name="" id="" class="style-input-general">
                 </div>
-                <div>
-                    <h4>Nombre de Usuario</h4>
-                    <input type="text">
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Nombre de Usuario</h4>
+                    <input type="text" name="" id="" class="style-input-general">
                 </div>
             </div>
         </section>
         <!--Centro de notas-->
-        <section>
-            <h2>Notas</h2>
-            <div>
-                <h4>13/08/2023</h4>
-                <div>
-                    <p>Encargado del caso :</p>
-                    <p>Leonel Messi</p>
+        <section class="section-notes">
+            <h2 class="color-blanco">Notas</h2>
+            <div class="card-note">
+                <div class="info-basic-nota">
+                    <h4 class="blue-title">13/08/2023</h4>
+                    <div>
+                        <p class="blue-title">Encargado del caso :</p>
+                        <p>Leonel Messi</p>
+                    </div>
                 </div>
-                <input type="text">
-            </div>
-            <div>
-                <img src="" alt="">
-                editar
-            </div>
-            <div>
-                <img src="" alt="">
-                Eliminar
-            </div>
 
-            <!--Boton agragar notas-->
-            <div>
-                Guardar
+                <textarea class="color-gris parrafo-note"  rows="4"></textarea>
             </div>
+            <section class="section-btn-edition">
+                <input type="submit" class="style-btn editar-btn" value="Guardar">
+            </section>
         </section>
-    </main>
+    </form>
 </body>
 </html>
