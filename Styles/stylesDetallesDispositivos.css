@@ -172,4 +172,15 @@ body{
 .section-notes{
     margin-bottom: 30px;
 }
-
+/*---- Style formulario e los imputs ----*/
+.style-input-general{
+    width: 100px;
+    padding: 4px;
+    border-radius: 20px;
+    margin: 2px;
+}
+.parrafo-note{
+    width: 100%;
+    border-radius: 20px;
+    font-family: 'Kanit', sans-serif;
+}
