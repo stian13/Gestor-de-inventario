@@ -3,80 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./Styles/stylesDetallesDispositivos.css">
     <title>Document</title>
 </head>
 <body>
     <header>
-        <section>
-            <div>
-                <img src="" alt=""> <!--Boton volver-->
-            </div>
-
-            <div>Inventario de computadoras-Impresoras-Scanner</div>
-        </section>
+        <header>
+            <section class="Container-cabecera">
+                <div ><!--logo alcaldia-->
+                    <img src="./Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
+                </div>
+    
+                    <h1>Caractaristicas de computadora</h1>
+    
+                <div><!--logo alcaldia-->
+                    <img src="./Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
+                </div>
+            </section>
+        </header>
         <div>
             <img src="" alt=""><!--Boton salir sesion-->
         </div>
     </header>
-    <main>
-        <section>
-            <div>
-                <h4>Codigo Inventario</h4>
-                <p>005</p>
+    <main class="main-info-dispositivo">
+        <section class="info-dispostivo-section">
+            <div class="code-dispositivo">
+                <h3 class="blue-title">Codigo Inventario</h3>
+                <p>0054</p>
             </div>
-            <div>
-                <div>
-                    <h4>Nombre Oficina</h4>
-                    <p></p>
+            <div class="info-ubicacion">
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Nombre Oficina</h4>
+                    <p>contaduria cede centro</p>
                 </div>
-                <div>
-                    <h4>Tipo</h4>
-                    <p></p>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Tipo</h4>
+                    <p>Impresora</p>
                 </div>
-                <div>
-                    <h4>Marca</h4>
-                    <p></p>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Marca</h4>
+                    <p>hp julio pacar</p>
                 </div>
-                <div>
-                    <h4>Modelo</h4>
-                    <p></p>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Modelo</h4>
+                    <p>hp lasejept jo1'03u4859230</p>
                 </div>
-                <div>
-                    <h4>S/N Equipo</h4>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">S/N Equipo</h4>
                     <p>ZZFXH4LG901840A</p>
                 </div>
-                <div>
-                    <h4>Nombre de Usuario</h4>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Nombre de Usuario</h4>
                     <p>Carlos Pochetino</p>
                 </div>
             </div>
         </section>
+
+        <section class="section-btn-edition">
+            <div class="style-btn editar-btn">Editar</div>
+            <div class="style-btn borra-btn">Borrar</div>
+        </section>
+
+
         <!--Centro de notas-->
-        <section>
-            <h2>Notas</h2>
-            <div>
-                <h4>13/08/2023</h4>
-                <div>
-                    <p>Encargado del caso :</p>
-                    <p>Leonel Messi</p>
+        <!--Centro de notas-->
+        <section class="section-notes">
+            <h2 class="color-blanco">Notas</h2>
+            <div class="card-note">
+                <div class="info-basic-nota">
+                    <h4 class="blue-title">13/08/2023</h4>
+                    <div>
+                        <p class="blue-title">Encargado del caso :</p>
+                        <p>Leonel Messi</p>
+                    </div>
                 </div>
-                <p>
+
+                <p class="color-gris">
                     es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
                 </p>
             </div>
-            <div>
-                <img src="" alt="">
-                editar
-            </div>
-            <div>
-                <img src="" alt="">
-                Eliminar
-            </div>
-
-            <!--Boton agragar notas-->
-            <div>
-                Agregar Nota
-            </div>
+            <section class="section-btn-edition">
+                <div class="style-btn editar-btn">Editar</div>
+                <div class="style-btn borra-btn">Borrar</div>
+                <div class="style-btn add-note-btn">Agregar nota</div>
+            </section>
         </section>
     </main>
 </body>
