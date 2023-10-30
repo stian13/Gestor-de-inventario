@@ -14,6 +14,7 @@ html{
     --size-titulos : 26px;
     --rojo : #ff0b0b;
     --rojo-bajo : #F52E2E;
+    --morado: rgb(106, 39, 182);
 }
 body{
     background-color: var(--grisFuerteFondo);
@@ -109,6 +110,42 @@ body{
     justify-content: center;
     gap: 30px;
 }
+/*-- seccion de botones de dedicion --*/
+
+.section-btn-edition{
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.style-btn{
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--blancoGrisaseo);
+}
+
+.editar-btn{
+    background-color: var(--azul);
+}
+.editar-btn:hover{
+    background-color: #442dca;
+}
+
+.borra-btn{
+    background-color: var(--rojo);
+}
+.borra-btn:hover{
+    background-color: #F52E2E;
+}
+
+.add-note-btn{
+    background-color:rgb(106, 39, 182);
+}
+.add-note-btn:hover{
+    background-color:rgb(133, 57, 219);
+}
+
 
 /*-- Section de notas --*/
 .color-blanco{
@@ -132,4 +169,7 @@ body{
     color: var(--grisFuerteFondo);
 }
 
+.section-notes{
+    margin-bottom: 30px;
+}
 
