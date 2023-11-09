@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./Styles/stylesInicioSesion.css">
+    <link rel="stylesheet" href="../Styles/stylesInicioSesion.css">
 </head>
 <body>
     <header>
@@ -19,23 +19,28 @@
         <section class="container-form">
             <div class="container-form__card">
                 <h3>Registro</h3>
-                <form action="" class="form-login">
+                <form class="form-login" id="formulario-registro">
                     <div>
-                        <label for="full_name">Nombre y apellidos</label>
+                        <label>Nombre y apellidos</label>
                         <input type="text" name="full_name" class="form-login__input">
                     </div>
                     <div>
-                        <label for="nameUser">Nombre usuario</label>
+                        <label>Nombre usuario</label>
                         <input type="text" name="nameUser" class="form-login__input">
                     </div>
                     <div>
-                        <label for="password">Contraseña</label>
+                        <label>Correo electronico</label>
+                        <input type="email" name="correo" class="form-login__input">
+                    </div>
+                    <div>
+                        <label>Contraseña</label>
                         <input type="password" name="password" class="form-login__input">
                     </div>
-                    <input type="submit" value="Registrar" class="form-login__boton">
+                    <button type="submit" class="form-login__boton">Registrar</button>
                 </form>
             </div>
         </section>
     </main>
+    <script src="../javascript/envioDeDatosAphp/dataFormRegister.js"></script>
 </body>
 </html>
