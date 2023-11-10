@@ -12,12 +12,12 @@ function redireccion(ubicacion) {
     //inicio de sesion redireccion
 inicioDeSesion.addEventListener('click', function (e){
     e.preventDefault();
-    redireccion("./sesionIniciar.html")
+    redireccion("./sesionIniciar.html?nocache=" + Math.random())
 });
     //pagina de registro redireccion
 registro.addEventListener('click', function (e){
     e.preventDefault();
     alert("me has echo clik en el registro");
-    redireccion("./html/Registro.html")
+    redireccion("./html/Registro.html?nocache=" + Math.random())
 });
 

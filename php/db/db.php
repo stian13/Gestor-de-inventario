@@ -6,16 +6,23 @@ if ($mysqli->connect_errno) {
 }else{
     echo "Conexion exitosa <br>";
 }
-
-$consulta_one = "SELECT * FROM computadoras";
+$new_correo = "orlado@gmail.com";
+$new_apodo_user = "orlandito";
+$new_contrasena = "125";
+$consulta_one = "SELECT * FROM admin_tec";
 
 $resultado_consulta = $mysqli -> query($consulta_one);
 
-while ($row = $resultado_consulta->fetch_assoc()) {
-    echo $row['id_computador']."<br>";
-    echo $row['code_invet']."<br>";
-    echo $row['nombre_pc']."<br>";
-    echo $row['tipo_pc']."<br>";
+if ($resultado_consulta -> num_rows > 0) {
+    while ($row = $resultado_consulta->fetch_assoc()) {
+        if ( $new_correo === $row['correo'] || $new_apodo_user === $row['apodo_user'] || $new_contrasena === $row['contrasena']) {
+            echo "el usuario ya existe, intente con otros datos";
+        }
+    }
+    echo "bienvenido";
+}else{
+    echo "La tabla no conteine informacion";
 }
+
 
 ?>
