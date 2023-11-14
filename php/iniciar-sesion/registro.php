@@ -1,25 +1,31 @@
 <?php
-include '../db/db.pb';
-#variables formularios
+
+#conexion a la base de datos
+$mysqli = new mysqli("localhost", "root", "", "inventario_sistemas");
+
+# Variables de formulario
 $nombre_completo = $_POST['full_name'];
 $apodo = $_POST['nameUser'];
 $correo = $_POST['correo'];
 $contraseña = $_POST['password'];
 
-#querys
-$info_tabla_admin = "SELECT * FROM admin_tec";
-#--- Funciones ---
 
-#Verificacion de datos 
+# Query
+$info_tabla_admin = "SELECT * FROM admin_tec WHERE apodo_user='$apodo' OR correo='$correo'";
 
+$envio_info_query = "INSERT INTO `admin_tec`( `nombre_user`, `apodo_user`, `contrasena`, `correo`) VALUES ('$nombre_completo', '$apodo', '$contraseña', '$correo')";
 
-#envio de datos
+#Ejecucion del cuery
+$consulta_usuario = $mysqli->query($info_tabla_admin);
 
-
-if ($nombre_completo === '' || $apodo === '' || $contraseña === '' || $correo === '') {
-    echo json_encode('llena todos los campos perra');
-}else {
-    echo json_encode('Bienbenido pedaso de mierda parlante <br> ' . $nombre_completo . '<br>' . $apodo . '<br>' . $correo . '<br>' . $contraseña );
+# Verificar si el usuario ya existe
+if ($consulta_usuario->num_rows > 0) {
+    echo json_encode('Existing-User');
+} else {
+    $mysqli->query($envio_info_query);
+    echo json_encode('User-Aggregator');
 }
+
+
 
 ?>

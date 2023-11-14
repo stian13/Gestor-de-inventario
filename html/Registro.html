@@ -22,23 +22,28 @@
                 <form class="form-login" id="formulario-registro">
                     <div>
                         <label>Nombre y apellidos</label>
-                        <input type="text" name="full_name" class="form-login__input">
+                        <input type="text" name="full_name" class="form-login__input" id="nameFull" required>
                     </div>
                     <div>
-                        <label>Nombre usuario</label>
-                        <input type="text" name="nameUser" class="form-login__input">
+                        <label>Nombre usuario</label> 
+                        <input type="text" name="nameUser" class="form-login__input" id="userName" required>
                     </div>
                     <div>
                         <label>Correo electronico</label>
-                        <input type="email" name="correo" class="form-login__input">
+                        <input type="email" name="correo" class="form-login__input" id="email" required>
                     </div>
                     <div>
                         <label>Contraseña</label>
-                        <input type="password" name="password" class="form-login__input">
+                        <input type="password" name="password" class="form-login__input" id="contraseña" required>
                     </div>
-                    <button type="submit" class="form-login__boton">Registrar</button>
+                    <button type="submit" class="form-login__boton" id="btn-registro">Registrar</button>
                 </form>
+                <div class="conten-mesaje">
+                    <p class="mensaje-n inactivo" id="">Usuario existente</p>
+                    <p class="mensaje-p inactivo">Usuario agregado satisfactoriamente</p>
+                </div>
             </div>
+            <div></div>
         </section>
     </main>
     <script src="../javascript/envioDeDatosAphp/dataFormRegister.js"></script>

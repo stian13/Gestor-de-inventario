@@ -3,6 +3,7 @@ const inicioDeSesion = document.querySelector('#inicio-de-sesion')
 //redireccion boton a inicio de sesion
 const registro = document.querySelector('#registro')
 
+
 //Funcion de redireccion 
 function redireccion(ubicacion) {
     window.location.href = ubicacion;
