@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Registro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,9 +41,16 @@
                     </div>
                     <button type="submit" class="form-login__boton" id="btn-registro">Registrar</button>
                 </form>
-                <div class="conten-mesaje">
-                    <p class="mensaje-n inactivo" id="">Usuario existente</p>
-                    <p class="mensaje-p inactivo">Usuario agregado satisfactoriamente</p>
+                
+            </div>
+            <div class="conten-mesaje">
+                <div class="mensaje-n cartel inactivo" id="">
+                    <p>El usuario ya existe intente con otro nuevamente</p>
+                    <button class="btn-recargar">Recargar</button>
+                </div>
+                <div class="mensaje-p cartel inactivo" id="">
+                    <p>Has sido agregado satisfactoriamente</p>
+                    <button class="btn-loginR">Iniciar-sesion</button>
                 </div>
             </div>
             <div></div>

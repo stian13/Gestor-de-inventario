@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Inicias Sesion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./Styles/stylesInicioSesion.css">
+    <link rel="stylesheet" href="../Styles/stylesInicioSesion.css">
 </head>
 <body>
     <header>
@@ -19,7 +22,7 @@
         <section class="container-form">
             <div class="container-form__card">
                 <h3>login</h3>
-                <form action="" class="form-login">
+                <form action="../php/iniciar-sesion/inicio-sesion.php" class="form-login" method="post">
                     <div>
                         <label for="nameUser">Usuario</label>
                         <input type="text" name="nameUser" class="form-login__input">

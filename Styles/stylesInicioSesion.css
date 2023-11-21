@@ -34,7 +34,7 @@ body{
     display: flex;
     justify-content: center;
 }
-.container-form .container-form__card{
+.container-form__card{
     width: 400px;
     height: 450px;
     background-color: var(--blancoGrisaseo);
@@ -78,4 +78,38 @@ body{
 
 .inactivo {
     display : none;
+}
+
+/*---Mensaje de advertencia de registro---*/
+.cartel{
+    width: 300px;
+    height: 120px;
+    text-align: center;
+    padding-top: 30px;
+    margin: 20px 0 0 0;
+    border-radius: 20px;
+}
+.mensaje-n{
+    background-color: #d19393;
+}
+.mensaje-p{
+    background-color: var(--blancoGrisaseo);
+}
+.btn-recargar{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--rojo);
+    color: var(--blanco);
+    margin-top: 5px;
+}
+.btn-loginR{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--azul);
+    color: var(--blanco);
+    margin-top: 5px;
 }
