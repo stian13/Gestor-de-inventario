@@ -150,3 +150,7 @@ body{
     background-color: var(--rojo);
     color: #353535;
 }
+
+.desactivar{
+    display: none;
+}

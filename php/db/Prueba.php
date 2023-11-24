@@ -15,37 +15,37 @@ while ($row = mysqli_fetch_assoc($result)) {
     if (!isset($computadorasConComentarios[$idComputadora])) {
         $computadorasConComentarios[$idComputadora] = array(
             'id_computador' => $row['id_computador'],
-            'code_invet' => $row ['code_invet'],
-            'nameUser' => $row ['nameUser'],
-            'tipo_pc' => $row ['tipo_pc'],
-            'marca_pc' => $row ['marca_pc'],
-            's_n_pc' => $row ['s_n_pc'],
-            'modelo' => $row ['modelo'],
-            'procesador' => $row ['procesador'],
-            'ram' => $row ['ram'],
-            'tipo_ram' => $row ['tipo_ram'],
-            'almacenamiento' => $row ['almacenamiento'],
-            'tipo_disco' => $row ['tipo_disco'],
-            'so' => $row ['so'],
-            'licencia_so' => $row ['licencia_so'],
-            'office_v' => $row ['office_v'],
-            'licencia_office' => $row ['licencia_office'],
-            'marca_mause' => $row ['marca_mause'],
-            's_n_mouse' => $row ['s_n_mouse'],
-            'modelo_muse' => $row ['modelo_muse'],
-            'marca_teclado' => $row ['marca_teclado'],
-            's_n_tecaldo' => $row ['s_n_tecaldo'],
-            'modelo_teclado' => $row ['modelo_teclado'],
-            'monitorMarca' => $row ['monitorMarca'],
-            'monitorModelo' => $row ['monitorModelo'],
-            'monitorSN' => $row ['monitorSN'],
+            'code_invet' => ['code_invet'],
+            'nameUser' => ['nameUser'],
+            'tipo_pc' => ['tipo_pc'],
+            'marca_pc' => ['marca_pc'],
+            's_n_pc' => ['s_n_pc'],
+            'modelo' => ['modelo'],
+            'procesador' => ['procesador'],
+            'ram' => ['ram'],
+            'tipo_ram' => ['tipo_ram'],
+            'almacenamiento' => ['almacenamiento'],
+            'tipo_disco' => ['tipo_disco'],
+            'so' => ['so'],
+            'licencia_so' => ['licencia_so'],
+            'office_v' => ['office_v'],
+            'licencia_office' => ['licencia_office'],
+            'marca_mause' => ['marca_mause'],
+            's_n_mouse' => ['s_n_mouse'],
+            'modelo_muse' => ['modelo_muse'],
+            'marca_teclado' => ['marca_teclado'],
+            's_n_tecaldo' => ['s_n_tecaldo'],
+            'modelo_teclado' => ['modelo_teclado'],
+            'monitorMarca' => ['monitorMarca'],
+            'monitorModelo' => ['monitorModelo'],
+            'monitorSN' => ['monitorSN'],
             'nombre_pc' => $row['nombre_pc'],
             'nombre_oficna' => $row['nombre_oficna'],
             // ... otras columnas de la computadora que desees incluir
-            'comentarios' => array(), // un array para almacenar los comentarios
-            #'fecha' => $row['fecha'],
-            #'nota_pc' => $row['nota_pc'],
-            #'apodo_user' => $row['apodo_user'],
+            #'comentarios' => array(), // un array para almacenar los comentarios
+            'fecha' => $row['fecha'],
+            'nota_pc' => $row['nota_pc'],
+            'apodo_user' => $row['apodo_user'],
             
         );
     }
@@ -56,7 +56,6 @@ while ($row = mysqli_fetch_assoc($result)) {
         'fecha' => $row['fecha'],
         'nota_pc' => $row['nota_pc'],
         'id_admin' => $row['id_admin'],
-        'nombre_user' => $row['nombre_user'],
         // ... otras columnas del comentario que desees incluir
     );
 }
@@ -65,4 +64,3 @@ $resultJson = json_encode(array_values($computadorasConComentarios));
 echo $resultJson;
 
 ?>
-

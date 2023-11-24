@@ -107,7 +107,7 @@ session_start();
                     <p>VK7JG-NPHTM-C97JM-9MPGT-3V66T</p>
                 </div>
             </div>
-<hr class="linea-divisora">
+            <hr class="linea-divisora">
             <!--Caracteristicas perifericos-->
             <div class="content-perifericos">
                 <h4 class="blue-title">Monitor</h4>
@@ -130,7 +130,7 @@ session_start();
                     </div>
                 </div>
             </div>
-<hr class="linea-divisora">
+            <hr class="linea-divisora">
             <div class="content-perifericos">
                 <h4 class="blue-title">Mouse</h4>
                 <div class="periferico">
@@ -148,7 +148,7 @@ session_start();
                     </div>
                 </div>
             </div>
-<hr class="linea-divisora">
+            <hr class="linea-divisora">
             <div class="content-perifericos">
                 <h4 class="blue-title">Teclado</h4>
                 <div class="periferico">

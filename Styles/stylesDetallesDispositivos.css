@@ -125,6 +125,7 @@ body{
     color: var(--blancoGrisaseo);
 }
 
+
 .editar-btn{
     background-color: var(--azul);
 }
@@ -184,4 +185,34 @@ body{
     border-radius: 20px;
     font-family: 'Kanit', sans-serif;
     padding: 10px;
+}
+
+.fechaAuto{
+    border: none;
+    background-color: var(--blancoGrisaseo);
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 5px;
+}
+
+.fechaAuto:focus{
+    outline: none;
+}
+
+.apodoUser{
+    border: none;
+    background-color: var(--blancoGrisaseo);
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 5px;
+}
+
+.apodoUser:focus{
+    outline: none;
 }

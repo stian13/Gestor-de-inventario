@@ -26,7 +26,9 @@ function llamadoDataPhp (ubicacion, tipoFuntion){
                 imprecioDataPc(data, comova)
             }else if(tipoFuntion === 'tableOficina'){
                 imprecioDataOficina(data)
-            } 
+            } else if (tipoFuntion === ''){
+                console.log(data);
+            }
         })
 }
 

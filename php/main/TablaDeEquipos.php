@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,24 +14,26 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../Styles/stylesTablaComputadoras.css">
+    <link rel="stylesheet" href="../../Styles/stylesDetallesDispositivos.css">
     <title>Inventario de computadoras</title>
 </head>
 <body>
-    <header>
+    
+    <header class = "totalHeader">
         <section class="Container-cabecera">
-            <div ><!--logo alcaldia-->
-                <img src="../../Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
-            </div>
+            
 
                 <h1>Inventario de computadoras</h1>
 
-            <div><!--logo alcaldia-->
-                <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
+            <div ><!--logo alcaldia-->
+                <a href="../iniciar-sesion/close.php">
+                    <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
+                </a>
             </div>
         </section>
     </header>
 
-    <main>
+    <main class="contentPestañaTable">
 
         <section class="content-buscador-oficinas"> <!--buscador y oficinas-->
             <div class="content-oficinas">
@@ -87,6 +90,48 @@ session_start();
         <!--Boton de agregar-->
         <button class="agregar-equipo">Agregar equipo</button>
     </main>
+
+    <!--Seccion donde se miestra los la ingormacion del equipo seleccionado!-->
+
+    <header class="infoPcCase desactivar">
+        <section class="Container-cabecera">
+            <div class = "regresarTablePc"><!--logo alcaldia-->
+                <img src="../../Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
+            </div>
+
+                <h1>Caractaristicas de computadora</h1>
+
+            <div>
+                <a href="../iniciar-sesion/close.php">
+                    <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
+                </a>
+            </div>
+        </section>
+    </header>
+
+    <main class="main-info-dispositivo">
+        
+        <!--Centro de notas-->
+        
+        
+    </main>
+    <form class="section-notes meterNota desactivar" action="../db/enviaComentario.php" method="post">
+            <h2 class="color-blanco">Notas</h2>
+            <div class="card-note">
+                <div class="info-basic-nota">
+                    <input type="date" class="fechaAuto" readonly name = "fechaEscrito">
+                    <div>
+                        <p class="blue-title">Encargado del caso :</p>
+                        <input type="text" class="apodoUser" name = "nameAdmin" value="<?= $_SESSION['usuario'] ?>" readonly>
+                    </div>
+                </div>
+
+                <textarea class="color-gris parrafo-note"  rows="4" name = "texto"></textarea>
+            </div>
+            <section class="section-btn-edition">
+                <input type="submit" class="style-btn editar-btn" value="Guardar">
+            </section>
+    </form>
     <script src = "../../javascript/Function/variables.js"></script>
     <script src = "../../javascript/Function/funtionArrays.js"></script>
     <script src = "../../javascript/dataDbPhp/dataPc.js"></script>
