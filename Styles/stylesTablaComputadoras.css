@@ -26,10 +26,17 @@ body{
     color: var(--blanco);
     margin: 50px 0 40px 0;
 }
-.Container-cabecera .img-volver{
+ .img-volver{
     width: 20px;
     height: 20px;
     cursor: pointer;
+}
+.btnControlTablePc{
+    display: flex;
+    gap: 10px;
+}
+.backMenu{
+    margin-left: 100px;
 }
 
 .Container-cabecera .img-salir{

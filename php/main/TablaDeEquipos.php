@@ -24,7 +24,7 @@ session_start();
             
 
                 <h1>Inventario de computadoras</h1>
-
+            
             <div ><!--logo alcaldia-->
                 <a href="../iniciar-sesion/close.php">
                     <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
@@ -32,7 +32,14 @@ session_start();
             </div>
         </section>
     </header>
-
+    <div class = "btnControlTablePc">
+        <div class = "backMenu"><!--logo alcaldia-->
+            <img src="../../Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
+        </div>
+        <div class = "reloadTablaPc"><!--logo alcaldia-->
+            <img src="../../Assets/Img/recargar.png" alt="" class="img-volver">
+        </div>
+    </div>
     <main class="contentPestañaTable">
 
         <section class="content-buscador-oficinas"> <!--buscador y oficinas-->
@@ -44,14 +51,14 @@ session_start();
                     </ul>
                 </div>
             </div>
-            <div class="buscador">
+            <!---<div class="buscador">
                 <form action="tu_script_de_búsqueda.php" method="GET">
                     <input type="text" name="q" placeholder="Buscar..." class="buscador__input">
                     <button type="submit" class="buscador__boton">
                         <img src="../../Assets/Img/lupa (1).png" alt="Buscar" class="buscador__lupa-img">
                     </button>
                 </form>
-            </div>
+            </div>!-->
         </section>
 
         <section class="Container-table-data">
@@ -115,6 +122,13 @@ session_start();
         
         
     </main>
+    <section class="section-btn-edition desactivar" id = "btnEdition">
+        <div class="style-btn editar-btn editInfoPc" id = "editInfoPc">Editar</div>
+        <div class="style-btn borra-btn">Borrar</div>
+    </section>
+    <section id = "sectorEditInfoPc">
+
+    </section>
     <form class="section-notes meterNota desactivar" action="../db/enviaComentario.php" method="post">
             <h2 class="color-blanco">Notas</h2>
             <div class="card-note">
@@ -123,6 +137,8 @@ session_start();
                     <div>
                         <p class="blue-title">Encargado del caso :</p>
                         <input type="text" class="apodoUser" name = "nameAdmin" value="<?= $_SESSION['usuario'] ?>" readonly>
+
+                        <input type="text" class="idCompu desactivar" name = "idPcOmpu">
                     </div>
                 </div>
 
@@ -132,6 +148,174 @@ session_start();
                 <input type="submit" class="style-btn editar-btn" value="Guardar">
             </section>
     </form>
+    <section class = "newNota">
+
+    </section>
+
+    <!---Seccion de edicion de datos de computadora!-->
+
+    <form class="info-dispostivo-section desactivar"  method="post" id = "formEditionPc">
+            <!--codigo-->
+            <div class="code-dispositivo">
+                <label class="blue-title">Codigo Inventario</label>
+                <input type="number"  class="style-input-general" id = "invenCd" name = "invenCode">
+                <input type="number"  class="style-input-general desactivar" id = "pcCd" name = "pcCode">
+            </div>
+            <!--Carateristicas de ubicacion-->
+            <div class="info-ubicacion">
+                <div class="tex-content-info">
+                    <h4 class="blue-title" for="tipo-computadora" >Nombre de Oficina</h4>
+                    <select id="listOficinas" name="oficina">
+                        
+                    </select>
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Tipo</h4>
+                    <select id="tipoComputadora" name="tipo-computadora">
+                        <option value="pc-escritorio">PC de escritorio</option>
+                        <option value="todo-en-uno">Todo en uno</option>
+                        <option value="portatil">Portátil</option>
+                    </select>
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Marca</h4>
+                    <input type="text" id="pcMarca" class="style-input-general" name="marcaPC">
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title" >S/N</h4>
+                    <input type="text" id="pcSn" class="style-input-general" name ="snpc">
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Nombre de Usuario</h4>
+                    <input type="text" id="nameUsuario" class="style-input-general" name="nombreUser">
+                </div>
+            </div>
+            <!--Caracteristicas Tecnicas-->
+            <div class="especificaciones-tecnicas-content">
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title">Modelo</h4>
+                    <input type="text" id="pcModel" class="style-input-general" name ="modeloPc">
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title" >Peocesador</h4>
+                    <input type="text"  id="CPU" class="style-input-general" name ="cpu">
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title" >Memoria RAM</h4>
+                    <input type="text"  id="memoryRam" class="style-input-general" name ="ram">
+
+                    <h4 class="blue-title">Tipo</h4>
+                    <select id="ramTipo" name="tipoRam">
+                        <option value="DIM">DIM</option>
+                        <option value="DDR1">DDR1</option>
+                        <option value="DDR2">DDR2</option>
+                        <option value="DDR3">DDR3</option>
+                        <option value="DDR4">DDR4</option>
+                        <option value="Desconocido">Desconocido</option>
+                    </select>
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title">Almacenamiento</h4>
+                    <input type="text"  id="almacenDisco" class="style-input-general" name = "capacidadDisco">
+
+                    <h4 class="blue-title">Tipo</h4>
+                    <select id="diskType" name="tipoDisco">
+                        <option value="SSD">SSD</option>
+                        <option value="HDD">HDD</option>
+                    </select>
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title">OFFICE VERSION</h4>
+                    <input type="text" id="versionOffice" class="style-input-general" name ="officeV">
+
+
+                    <h4 class="blue-title">licencia</h4>
+                    <input type="text"  id="licenseOffice" class="style-input-general" name ="licenciaOffice"> 
+
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title">Nombre de Equipo</h4>
+                    <input type="text"  id="pcName" class="style-input-general" name ="namePc">
+
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title ">Sistema Operativo</h4>
+                    <input type="text"  id="so" class="style-input-general" name = "nameSO">
+
+
+                    <h4 class="blue-title">licencia</h4>
+                    <input type="text"  id="lisenceSO" class="style-input-general" name = "sOLicencia">
+
+                </div>
+            </div>
+            <hr class="linea-divisora">
+            <!--Caracteristicas perifericos-->
+            <div class="content-perifericos">
+                <h4 class="blue-title">Monitor</h4>
+                <div class="periferico">
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Marca</h4>
+                        <input type="text" name="marcaMonitor" id="monitorMarca" class="style-input-general">
+
+                    </div>
+                    <div class="tex-content-info"> 
+                        <h4 class="blue-title">Modelo</h4>
+                        <input type="text" name="modeloMonitor" id="modelMonitor" class="style-input-general">
+
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Codigo S/N</h4>
+                        <input type="text" name="sNMonitor" id="monitorSn" class="style-input-general">
+
+                    </div>
+                    
+                </div>
+            </div>
+            <hr class="linea-divisora">
+            <div class="content-perifericos">
+                <h4 class="blue-title">Mouse</h4>
+                <div class="periferico">
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Marca</h4>
+                        <input type="text" name="marcMouse" id="marcaMause" class="style-input-general">
+
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Modelo</h4>
+                        <input type="text" name="modeloMouse" id="modelMouse" class="style-input-general">
+
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Codigo S/N</h4>
+                        <input type="text" name="snMouse" id="mouseSn" class="style-input-general">
+
+                    </div>
+                </div>
+            </div>
+            <hr class="linea-divisora">
+            <div class="content-perifericos">
+                <h4 class="blue-title">Teclado</h4>
+                <div class="periferico">
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Marca</h4>
+                        <input type="text" name="marcaTeclado" id="keyboardMarca" class="style-input-general">
+
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Modelo</h4>
+                        <input type="text" name="modeloTeclado" id="keyboardModelo" class="style-input-general">
+
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Codigo S/N</h4>
+                        <input type="text" name="snTeclado" id="keyboardSN" class="style-input-general">
+
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="jecutar">
+        </form>
+
     <script src = "../../javascript/Function/variables.js"></script>
     <script src = "../../javascript/Function/funtionArrays.js"></script>
     <script src = "../../javascript/dataDbPhp/dataPc.js"></script>

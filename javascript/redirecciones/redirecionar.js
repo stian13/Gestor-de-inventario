@@ -18,6 +18,5 @@ inicioDeSesion.addEventListener('click', function (e){
     //pagina de registro redireccion
 registro.addEventListener('click', function (e){
     e.preventDefault();
-    alert("me has echo clik en el registro");
     redireccion("./html/Registro.html?nocache=" + Math.random())
 });

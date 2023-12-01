@@ -170,6 +170,17 @@ body{
     color: var(--grisFuerteFondo);
 }
 
+.newNota{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.newNotecard{
+    width: 900px;
+    background-color:#9deaeaff;
+}
+
 .section-notes{
     margin-bottom: 30px;
 }
@@ -215,4 +226,7 @@ body{
 
 .apodoUser:focus{
     outline: none;
+}
+.desactivar{
+    display: none;
 }

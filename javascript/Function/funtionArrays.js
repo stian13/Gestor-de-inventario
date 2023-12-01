@@ -1,5 +1,5 @@
 let comova = "";
-function llamadoDataPhpNew (ubicacion, tipoFuntion, cuaal){
+function llamadoDataPhpNew (ubicacion, tipoFuntion, cuaal, primerOfi){
     fetch(ubicacion)
     .then(response => response.json())
     .then(data => {
@@ -7,7 +7,7 @@ function llamadoDataPhpNew (ubicacion, tipoFuntion, cuaal){
             if (tipoFuntion === 'tablePc') {
                 imprecioDataPc(data, cuaal)
             }else if(tipoFuntion === 'tableOficina'){
-                imprecioDataOficina(data)
+                imprecioDataOficina(data, cuaal, primerOfi)
             } 
         })
 }
@@ -18,6 +18,48 @@ function dtFromComent() {
     const apodoUserAdmin = document.querySelector('.apodoUser')
     fechaAuto.value = fechaActual
 }
+
+function colocadorInfoForm(dataObject) {
+    invenCd.value = dataObject.codeInvet
+    
+    
+    llamadoDataPhpNew('../../php/db/dataOficina.php', 'tableOficina', 'oficinasFormulario', dataObject.nameOfi)
+    tipoComputadora.value = dataObject.tipoPc
+    if (dataObject.tipoPc) {
+        const option = document.createElement("option")
+        option.value = dataObject.tipoPc + " uno "
+        option.textContent = dataObject.tipoPc + " uno "
+        tipoComputadora.appendChild(option)
+        console.log(tipoComputadora);
+    }
+    pcMarca.value = dataObject.marcaPc
+    pcSn.value = dataObject.sNPc
+    nameUsuario.value = dataObject.nameUser
+    pcModel.value = dataObject.modelo
+    cerebroPc.value = dataObject.procesador
+    memoryRam.value = dataObject.ram
+    ramTipo.value = dataObject.tipoRam
+    almacenDisco.value = dataObject.almacenamiento
+    diskType.value = dataObject.tipoDisco
+    versionOffice.value = dataObject.officev
+    licenseOffice.value = dataObject.licenciaOffice
+    pcName.value = dataObject.nombrePc
+    SO.value = dataObject.so
+    lisenceSO.value = dataObject.licenciaSo
+
+    monitorMarca.value = dataObject.monitorMarca
+    modelMonitor.value = dataObject.monitorModelo
+    monitorSn.value = dataObject.monitorSN
+
+    marcaMause.value = dataObject.marcaMause
+    modelMouse.value = dataObject.modeloMuse
+    mouseSn.value = dataObject.sNMouse
+
+    keyboardMarca.value = dataObject.marcaTeclado
+    keyboardModelo.value = dataObject.modeloTeclado
+    keyboardSN.value = dataObject.sNTecaldo
+}
+
 function rederHtmlInfoPc(objetPc) {
     mainInfoDispositivo.innerHTML = `<!--Especificaciones generales-->
     <section class="info-dispostivo-section">
@@ -149,10 +191,23 @@ function rederHtmlInfoPc(objetPc) {
             </div>
         </div>
     </section>
-    <section class="section-btn-edition">
-        <div class="style-btn editar-btn">Editar</div>
-        <div class="style-btn borra-btn">Borrar</div>
-    </section>`;
+    `;
+    
+    //const sectorEditInfoPc = document.querySelector('#sectorEditInfoPc')
+    
+    const btnEdition = document.querySelector('#btnEdition')
+    btnEdition.classList.remove('desactivar')
+        //Botones Internos 
+        const editInfoPc = document.querySelector('#editInfoPc')
+    mainInfoDispositivo.appendChild(btnEdition)
+        editInfoPc.addEventListener('click', (e)=>{
+            e.preventDefault();
+            formEditionPc.classList.remove('desactivar')
+            colocadorInfoForm(objetPc)
+            //sectorEditInfoPc.appendChild(formEditionPc)
+        })
+    
+
     const sectionNotes = document.createElement('section')
     sectionNotes.classList.add('section-notes')
 
@@ -165,6 +220,8 @@ function rederHtmlInfoPc(objetPc) {
     btnAgregarNota.classList.add("style-btn", "add-note-btn")
     btnAgregarNota.innerText = "Agregar Nota"
     sectionNotes.append(titleNota)
+
+    console.log(objetPc.idComputador);
 
     objetPc.comentarios.forEach(infoComent => {
         sectionNotes.innerHTML += `
@@ -190,32 +247,71 @@ function rederHtmlInfoPc(objetPc) {
         </section>*/
     });
     sectionNotes.append(btnAgregarNota)
-
+    const meterNota = document.querySelector('.meterNota')
     btnAgregarNota.addEventListener('click', (e)=> {
         e.preventDefault();
-        
-        const meterNota = document.querySelector('.meterNota')
         dtFromComent()
+        
+        const idCompu = document.querySelector('.idCompu')
+        idCompu.value = objetPc.idComputador
+        
         sectionNotes.append(meterNota)
         meterNota.classList.remove('desactivar')
 
     })
 
+    meterNota.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        let fronData = new FormData (meterNota);
+        fetch('../db/enviaComentario.php',{
+            method : 'POST',
+            body : fronData
+        })
+            .then(res => res.json())
+            .then (data => {
+                 if (data) {
+                    meterNota.innerHTML = ""
+                    const mosNewNota = document.querySelector('.newNota')
+                    mosNewNota.innerHTML += data
+                 }else if (data == "error"){
+                    console.log(data);
+                 }
+            })
+    })
+
     mainInfoDispositivo.appendChild(sectionNotes)
 }
 
-function imprecioDataOficina(dataOfici) {
-    dataOfici.forEach(element => {
-        const liOfice = document.createElement("li")
-        liOfice.textContent = element.nombre_oficna
-        contentUlTable.appendChild(liOfice)
-        liOfice.addEventListener('click',(e)=>{
-            e.preventDefault();
-            contenidoTabla.innerHTML = ''
-            comova = element.nombre_oficna
-            llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', comova)
-        })
-    });
+function imprecioDataOficina(dataOfici, typeTarea, nameOneOfi) {
+    if (typeTarea == "oficinasTabla") {
+        dataOfici.forEach(element => {
+            const liOfice = document.createElement("li")
+            liOfice.textContent = element.nombre_oficna
+            contentUlTable.appendChild(liOfice)
+            liOfice.addEventListener('click',(e)=>{
+                e.preventDefault();
+                contenidoTabla.innerHTML = ''
+                comova = element.nombre_oficna
+                llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', comova)
+            })
+        });
+    } else if (typeTarea == "oficinasFormulario") {
+        
+        const optionOne = document.createElement("option");
+        optionOne.textContent = nameOneOfi;
+        optionOne.value = nameOneOfi;
+                oficina.appendChild(optionOne);
+
+                dataOfici.forEach(element => {
+            //<option value="Recaudo">Recaudo</option>
+            if (nameOneOfi != element.nombre_oficna) {
+                const option = document.createElement("option");
+                option.textContent = element.nombre_oficna;
+                option.value = element.nombre_oficna;
+                oficina.appendChild(option);
+            }
+        });
+    }
 }
 
 function imprecioDataPc(array, queRederizo){
@@ -300,6 +396,7 @@ function imprecioDataPc(array, queRederizo){
                 infoPcCase.classList.remove("desactivar")
 
                 totalHeader.classList.add("desactivar")
+                btnControlTablePc.classList.add("desactivar")
                 rederHtmlInfoPc(objetPc);
             });
         }
@@ -312,8 +409,33 @@ function recargar() {
     let nuevaURL = window.location.href + '?random=' + randomNumber;
     window.location.href = nuevaURL;
 }
-
+function redirigir (lugar) {
+    window.location.href = lugar;
+}
 regresarTablePc.addEventListener('click', (e)=>{
     e.preventDefault();
     recargar();
 })
+regresarAlMenu.addEventListener ('click', (e)=>{
+    e.preventDefault();
+    redirigir('./invetarioPestañaPrincipal')
+})
+reloadTablaPc.addEventListener('click', (e)=>{
+    e.preventDefault;
+    recargar();
+})
+//invetarioPestañaPrincipal.php
+
+/*
+formEditionPc.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    let fronData = new FormData (formEditionPc);
+    fetch('../db/edicionDataPc.php',{
+        method : 'POST',
+        body : fronData
+    })
+        .then(res => res.json())
+        .then (data => {
+             console.log(data);
+        })
+})*/
