@@ -58,6 +58,7 @@ function envioDataForm (ubicacion, contentForm,){
     })
         .then(res => res.json())
         .then (data => {
+            console.log(data);
              mostrarMensajes(data)
         })
 }
