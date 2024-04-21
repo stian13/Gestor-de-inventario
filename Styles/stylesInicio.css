@@ -28,6 +28,11 @@ body{
     color: var(--blanco);
     padding: 40px 0 40px 0;
 }
+.img-volver-inicio{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
 
 /*--- seccion de login y register ---*/
 

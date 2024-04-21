@@ -63,6 +63,15 @@ body{
     border-bottom: 2px solid #000;
     margin: 16px 0;
 }
+.iput-general{
+    width: 350px;
+    border: none;
+    text-align: center;
+    background-color: transparent;
+    outline: none;
+    border-bottom: 2px solid #000;
+    margin: 16px 0;
+}
 
 .form-login__boton{
     background-color: var(--rojo);
@@ -112,4 +121,104 @@ body{
     background-color: var(--azul);
     color: var(--blanco);
     margin-top: 5px;
+}
+
+/*style inisio-sesion.php*/
+
+/*botton recuperar cuenta*/
+
+.content-recuperar-cuenta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 50px;
+    
+}
+.content-recuperar-cuenta div{
+    background-color: var(--blanco);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/*style recuperacion-cuente.php*/
+.content-form-correo-recuperacion{
+    display: flex;
+    justify-content: center;
+}
+.form-correo-recuperacion{
+    background-color: var(--blanco);
+    width: 60%;
+    margin-top: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+.imputCorreoRecuperacion{
+    width: 350px;
+    border: none;
+    text-align: center;
+    background-color: transparent;
+    outline: none;
+    border-bottom: 2px solid #000;
+    margin: 16px 0;
+}
+
+/*autentificacion.php*/
+
+.content-detalles-user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+}
+.detalles-user {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: var(--blanco);
+}
+.detalles-user ul li {
+    list-style: none;
+}
+.from-code-verificacion{
+    background-color: var(--blanco);
+    border-radius: 8px;
+    padding: 10px;
+}
+.from-code-verificacion form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*codigo_verificacion.php*/
+.form-cambio-contraseña{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+.form-cambio-contraseña form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--blanco);
+    padding: 10px;
+    border-radius: 8px;
+}
+/*cambioContraseña.php*/
+.mensaje-cambio-contraseña{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+.mensaje-cambio-contraseña div{
+    background-color:var(--blanco);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

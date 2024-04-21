@@ -11,9 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Styles/stylesInicioSesion.css">
+    <link rel="stylesheet" href="../Styles/stylesTablaComputadoras.css">
 </head>
 <body>
     <header>
+        <!--
+            <div>
+            <img src="../Assets/Img/flecha-izquierda.png" alt="" class="img-volver-inicio">
+        </div>
+        -->
         <section class="titulo-inventario">
             <h1>Sistema de inventario</h1>
         </section>
@@ -22,7 +28,8 @@
         <section class="container-form">
             <div class="container-form__card">
                 <h3>login</h3>
-                <form action="../php/iniciar-sesion/inicio-sesion.php" class="form-login" method="post">
+                
+                <form action="../php/iniciar-sesion/inicio-sesion.php" method="post" class="form-login">
                     <div>
                         <label for="nameUser">Usuario</label>
                         <input type="text" name="nameUser" class="form-login__input">
@@ -35,6 +42,8 @@
                 </form>
             </div>
         </section>
+        <div class = "errorperson"></div>
     </main>
+    
 </body>
 </html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        html{
+            font-family: 'Kanit', sans-serif;
+        }
+        :root{
+            --grisFuerteFondo : #4F4F4F;
+            --blancoGrisaseo : #D9D9D9;
+            --azul : #341BCB;
+            --blanco: #FFFFFF;
+            --size-titulos : 26px;
+            --rojo : #ff0b0b;
+            --rojo-bajo : #F52E2E;
+        }
+        body {
+            background-color: var(--grisFuerteFondo);
+        }
+        .Contenedor-mensaje{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card-mensaje{
+            background-color: var(--blanco);
+            border-radius: 10px;
+        }
+        .titulo{
+            text-align: center;
+            color : blue;
+        }
+        .text-mensaje{
+            padding: 0 10px;
+        }
+        .text-mensaje {
+            
+        }
+        .saludo{
+            font-size : 30px;
+            color : red;
+        }
+        .firma {
+            display: flex;
+            gap: 20px;
+        }
+
+        .firma img{
+            width: 150px;
+        }
+    </style>
+</head>
+    <body>
+        <section class=\"Contenedor-mensaje\">
+            <div class=\"card-mensaje\">
+                <h2 class = \"titulo\">Recuperación de contraseña</h2>
+                <div class=\"text-mensaje\">
+                    <p class =\"saludo\">Hola,</p>
+                    <p>Recibes este correo porque solicitaste restablecer tu contraseña.</p>
+                    <p>Por favor, utiliza el siguiente código para completar el proceso de recuperación:</p>
+                    <div>👉 $codeRecuperacion 👈</div>
+                    <p>Este código es válido por un tiempo limitado. No lo compartas con nadie.</p>
+                    <p>Si no solicitaste restablecer tu contraseña, puedes ignorar este mensaje.</p>
+                    <p>Gracias,</p>
+                    <div class=\"firma\">
+                        <img src="https://th.bing.com/th/id/R.91d2366f6c1b7d69a295f612a20f9ee0?rik=as%2bYt2EfZVxWgA&riu=http%3a%2f%2fwww.tecnocomprascr.com%2fwp-content%2fuploads%2f2014%2f06%2fsupport.png&ehk=AMrCnbiEXhYQevD2ILCiOpHx4yNOo3QDDyWeHU2HVhU%3d&risl=&pid=ImgRaw&r=0" alt="">
+                        <h1>El equipo de Soporte</p>
+                    </div>              
+                </div>
+                                
+            </div>
+        </section>
+    </body>
+</html>
