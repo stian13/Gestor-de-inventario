@@ -5,25 +5,26 @@ function llamadoDataPhpNew (ubicacion, tipoFuntion, cuaal, primerOfi){
     .then(data => {
         // Aquí 'data' contendrá los datos del resultado de la consulta
             if (tipoFuntion === 'tablePc') {
+                console.log(data);
                 imprecioDataPc(data, cuaal)
             }else if(tipoFuntion === 'tableOficina'){
+                console.log(data);
                 imprecioDataOficina(data, cuaal, primerOfi)
             } 
         })
 }
-
 function dtFromComent() {
     const fechaAuto = document.querySelector('.fechaAuto')
     const fechaActual = new Date().toISOString().split('T')[0];
     const apodoUserAdmin = document.querySelector('.apodoUser')
     fechaAuto.value = fechaActual
 }
-
+//Funcion que coloca la informacion en el formulario de un pc
 function colocadorInfoForm(dataObject) {
     invenCd.value = dataObject.codeInvet
     
     
-    llamadoDataPhpNew('../../php/db/dataOficina.php', 'tableOficina', 'oficinasFormulario', dataObject.nameOfi)
+    //llamadoDataPhpNew('../../php/db/dataOficina.php', 'tableOficina', 'oficinasFormulario', dataObject.nameOfi)
     tipoComputadora.value = dataObject.tipoPc
     if (dataObject.tipoPc) {
         const option = document.createElement("option")
@@ -281,7 +282,7 @@ function rederHtmlInfoPc(objetPc) {
 
     mainInfoDispositivo.appendChild(sectionNotes)
 }
-
+/*Funcion que mostrara todas las oficinas*/
 function imprecioDataOficina(dataOfici, typeTarea, nameOneOfi) {
     if (typeTarea == "oficinasTabla") {
         dataOfici.forEach(element => {
@@ -313,6 +314,7 @@ function imprecioDataOficina(dataOfici, typeTarea, nameOneOfi) {
         });
     }
 }
+llamadoDataPhpNew('../../php/db/dataOficina.php', 'tableOficina', 'oficinasFormulario', comova)
 
 function imprecioDataPc(array, queRederizo){
     array.forEach(element => {
@@ -397,12 +399,13 @@ function imprecioDataPc(array, queRederizo){
 
                 totalHeader.classList.add("desactivar")
                 btnControlTablePc.classList.add("desactivar")
-                rederHtmlInfoPc(objetPc);
+                //rederHtmlInfoPc(objetPc);
             });
         }
     })
     //imprecioDataOficina(array)
 }
+llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', '', undefined)
 
 function recargar() {
     let randomNumber = Math.floor(Math.random() * 1000000);

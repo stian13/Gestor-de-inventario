@@ -21,10 +21,7 @@ session_start();
     
     <header class = "totalHeader">
         <section class="Container-cabecera">
-            
-
                 <h1>Inventario de computadoras</h1>
-            
             <div ><!--logo alcaldia-->
                 <a href="../iniciar-sesion/close.php">
                     <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">

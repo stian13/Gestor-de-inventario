@@ -60,9 +60,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         // ... otras columnas del comentario que desees incluir
     );
 }
-
-$resultJson = json_encode(array_values($computadorasConComentarios));
-echo $resultJson;
+ 
+//$resultJson = json_encode(array_values($computadorasConComentarios));
+echo json_encode(array_values($computadorasConComentarios));
 
 ?>
 
