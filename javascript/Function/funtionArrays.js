@@ -5,14 +5,16 @@ function llamadoDataPhpNew (ubicacion, tipoFuntion, cuaal, primerOfi){
     .then(data => {
         // Aquí 'data' contendrá los datos del resultado de la consulta
             if (tipoFuntion === 'tablePc') {
-                console.log(data);
+                
                 imprecioDataPc(data, cuaal)
-            }else if(tipoFuntion === 'tableOficina'){
+                console.log(data);
+            }else if(tipoFuntion === 'funcionAllOficinas'){
                 console.log(data);
                 imprecioDataOficina(data, cuaal, primerOfi)
             } 
         })
 }
+//llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', '', '')
 function dtFromComent() {
     const fechaAuto = document.querySelector('.fechaAuto')
     const fechaActual = new Date().toISOString().split('T')[0];
@@ -22,7 +24,6 @@ function dtFromComent() {
 //Funcion que coloca la informacion en el formulario de un pc
 function colocadorInfoForm(dataObject) {
     invenCd.value = dataObject.codeInvet
-    
     
     //llamadoDataPhpNew('../../php/db/dataOficina.php', 'tableOficina', 'oficinasFormulario', dataObject.nameOfi)
     tipoComputadora.value = dataObject.tipoPc
@@ -60,7 +61,7 @@ function colocadorInfoForm(dataObject) {
     keyboardModelo.value = dataObject.modeloTeclado
     keyboardSN.value = dataObject.sNTecaldo
 }
-
+//esta funcion se ecarga de mostrar la informacion del pc seleccionado 
 function rederHtmlInfoPc(objetPc) {
     mainInfoDispositivo.innerHTML = `<!--Especificaciones generales-->
     <section class="info-dispostivo-section">
@@ -200,7 +201,7 @@ function rederHtmlInfoPc(objetPc) {
     btnEdition.classList.remove('desactivar')
         //Botones Internos 
         const editInfoPc = document.querySelector('#editInfoPc')
-    mainInfoDispositivo.appendChild(btnEdition)
+        mainInfoDispositivo.appendChild(btnEdition)
         editInfoPc.addEventListener('click', (e)=>{
             e.preventDefault();
             formEditionPc.classList.remove('desactivar')
@@ -221,32 +222,35 @@ function rederHtmlInfoPc(objetPc) {
     btnAgregarNota.classList.add("style-btn", "add-note-btn")
     btnAgregarNota.innerText = "Agregar Nota"
     sectionNotes.append(titleNota)
+        console.log(objetPc.comentario);
 
-    console.log(objetPc.idComputador);
-
-    objetPc.comentarios.forEach(infoComent => {
-        sectionNotes.innerHTML += `
-        <div class="card-note">
-            <div class="info-basic-nota">
-                <h4 class="blue-title">${infoComent.fecha}</h4>
-                <div>
-                    <p class="blue-title">Encargado del caso :</p>
-                    <p>${infoComent.nombre_user}</p>
+        objetPc.comentario.forEach(infoComent => {
+            if (infoComent.fecha == null && infoComent.nombre_user == null && infoComent.nota_pc == null) {
+                return
+            }
+            sectionNotes.innerHTML += `
+            <div class="card-note">
+                <div class="info-basic-nota">
+                    <h4 class="blue-title">${infoComent.fecha}</h4>
+                    <div>
+                        <p class="blue-title">Encargado del caso :</p>
+                        <p>${infoComent.nombre_user}</p>
+                    </div>
                 </div>
+    
+                <p class="color-gris">
+                    ${infoComent.nota_pc}
+                </p>
             </div>
-
-            <p class="color-gris">
-                ${infoComent.nota_pc}
-            </p>
-        </div>
-        <br>
-       `
-       /* <section class="section-btn-edition">
-            <div class="style-btn editar-btn">Editar</div>
-            <div class="style-btn borra-btn">Borrar</div>
-            <div class="style-btn add-note-btn">Agregar nota</div>
-        </section>*/
-    });
+            <br>
+           `
+           /* <section class="section-btn-edition">
+                <div class="style-btn editar-btn">Editar</div>
+                <div class="style-btn borra-btn">Borrar</div>
+                <div class="style-btn add-note-btn">Agregar nota</div>
+            </section>*/
+        })
+    
     sectionNotes.append(btnAgregarNota)
     const meterNota = document.querySelector('.meterNota')
     btnAgregarNota.addEventListener('click', (e)=> {
@@ -284,16 +288,20 @@ function rederHtmlInfoPc(objetPc) {
 }
 /*Funcion que mostrara todas las oficinas*/
 function imprecioDataOficina(dataOfici, typeTarea, nameOneOfi) {
-    if (typeTarea == "oficinasTabla") {
+    //imprime toda la lista de oficinas
+    if (typeTarea == "todasLasOficinas") {
         dataOfici.forEach(element => {
+            
             const liOfice = document.createElement("li")
             liOfice.textContent = element.nombre_oficna
             contentUlTable.appendChild(liOfice)
+            // en caso de que se de click a una de las oficinas, el siguiente codigo lo que ara mostrar todos los equipos que esten esa oficina
             liOfice.addEventListener('click',(e)=>{
                 e.preventDefault();
                 contenidoTabla.innerHTML = ''
                 comova = element.nombre_oficna
                 llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', comova)
+                console.log("me he ejecutado");
             })
         });
     } else if (typeTarea == "oficinasFormulario") {
@@ -314,10 +322,13 @@ function imprecioDataOficina(dataOfici, typeTarea, nameOneOfi) {
         });
     }
 }
-llamadoDataPhpNew('../../php/db/dataOficina.php', 'tableOficina', 'oficinasFormulario', comova)
+llamadoDataPhpNew('../../php/db/dataOficina.php', 'funcionAllOficinas', 'todasLasOficinas', '')
 
+//la funcion imprecionDataPc inprime la lista de pc que hay
 function imprecioDataPc(array, queRederizo){
+    //console.log(array[0].comentarios);
     array.forEach(element => {
+        //console.log(element.comentarios);
         const objetPc = {
             idComputador : element.id_computador, 
             codeInvet : element.code_invet, 
@@ -349,8 +360,9 @@ function imprecioDataPc(array, queRederizo){
             nameOfi : element.nombre_oficna,
             idOficePc : element.id_ofice_pc,
             //comentarios
-            comentarios : element.comentarios,
+            comentario : element.comentarios,
         }
+        
         if (element.nombre_oficna === queRederizo || queRederizo === "") {
             const cabecaraTableData = document.createElement("div")
             cabecaraTableData.classList.add("cabecara-table-data")
@@ -387,10 +399,10 @@ function imprecioDataPc(array, queRederizo){
     
                 
                 cabecaraTableDataListName.append(dOfice,nameUser,IdInv,typePc,cpu,disco,meRam)
-            contenidoTabla.append(cabecaraTableData,cabecaraTableDataListName)
+                contenidoTabla.append(cabecaraTableData,cabecaraTableDataListName)
     
             //Escuchador de eventos
-    
+            
             cabecaraTableDataListName.addEventListener('click', function (e) {
                 e.preventDefault();
                 contentPestañaTable.classList.add("desactivar")
@@ -399,13 +411,14 @@ function imprecioDataPc(array, queRederizo){
 
                 totalHeader.classList.add("desactivar")
                 btnControlTablePc.classList.add("desactivar")
-                //rederHtmlInfoPc(objetPc);
+                console.log(objetPc.comentario);
+                rederHtmlInfoPc(objetPc);
             });
         }
     })
     //imprecioDataOficina(array)
 }
-llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', '', undefined)
+
 
 function recargar() {
     let randomNumber = Math.floor(Math.random() * 1000000);
