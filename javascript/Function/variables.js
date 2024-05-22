@@ -19,12 +19,17 @@ const regresarAlMenu = document.querySelector('.backMenu')
 
 const reloadTablaPc = document.querySelector('.reloadTablaPc')
 
+//eleminar equipo
+const btnEliminar = document.querySelector('#btnEliminar')
 //variables formulario de edicion
+const oficinaActual = document.querySelector('#oficinaActual')
+
 const formEditionPc = document.querySelector('#formEditionPc')
 
 const invenCd = document.querySelector('#invenCd')
 const codePc = document.querySelector('#pcCd')//pendiente
 const oficina = document.querySelector('#listOficinas')
+const tipoPcActual = document.querySelector('#tipoPcActual')
 const tipoComputadora = document.querySelector('#tipoComputadora')
 const pcMarca = document.querySelector('#pcMarca')
 const pcSn = document.querySelector('#pcSn')

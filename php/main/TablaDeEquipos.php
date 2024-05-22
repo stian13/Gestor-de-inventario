@@ -120,8 +120,19 @@ session_start();
     </main>
     <section class="section-btn-edition desactivar" id = "btnEdition">
         <div class="style-btn editar-btn editInfoPc" id = "editInfoPc">Editar</div>
-        <div class="style-btn borra-btn">Borrar</div>
+        <div class="style-btn borra-btn" id = "btnEliminar">Borrar</div>
     </section>
+    <!--secion donde se borra el equipo-->
+    <div class = "eliminar-equipo ">
+        <form action="./eliminarPc.php" method="post" class="desactivar" id = "formEliminarPc">
+            <h2>¿Seguro que deseas ELIMINAR ESTE EQUIPO?</h2>
+            <input type="num" class = "desactivar" class = "idPcEliminar" id ="idPcEleminar" name = "idPcAEliminar">
+            <div>
+                <input type="submit" value="ELIMINAR" class = "style-btn borra-btn" >
+                <button class = "style-btn editar-btn" id = "cancelarEliminacion">CANCELAR</button>
+            </div>
+        </form>
+    </div>
     <section id = "sectorEditInfoPc">
 
     </section>
@@ -150,7 +161,8 @@ session_start();
 
     <!---Seccion de edicion de datos de computadora!-->
 
-    <form class="info-dispostivo-section desactivar"  method="post" id = "formEditionPc">
+    <div class = "conten-form-edit-pc">
+        <form class="info-dispostivo-section desactivar" action="./datosEditPc.php" method="post" id = "formEditionPc">
             <!--codigo-->
             <div class="code-dispositivo">
                 <label class="blue-title">Codigo Inventario</label>
@@ -161,13 +173,16 @@ session_start();
             <div class="info-ubicacion">
                 <div class="tex-content-info">
                     <h4 class="blue-title" for="tipo-computadora" >Nombre de Oficina</h4>
-                    <select id="listOficinas" name="oficina">
+                    <input type="text" id="oficinaActual" class="style-input-general" name = "oficinaActual">
+                    <input type="text" id="idOficeSelec" class="style-input-general desactivar" name = "idOfinaSeleccionada">
+                    <select id="listOficinas" name="oficina" class="style-input-list">
                         
                     </select>
                 </div>
                 <div class="tex-content-info">
                     <h4 class="blue-title">Tipo</h4>
-                    <select id="tipoComputadora" name="tipo-computadora">
+                    <input type="text" id="tipoPcActual" class="style-input-general" name = "tipoPc">
+                    <select id="tipoComputadora" name="tipo-computadora" class="style-input-list">
                         <option value="pc-escritorio">PC de escritorio</option>
                         <option value="todo-en-uno">Todo en uno</option>
                         <option value="portatil">Portátil</option>
@@ -309,9 +324,9 @@ session_start();
                     </div>
                 </div>
             </div>
-            <input type="submit" value="jecutar">
+            <input type="submit" value="jecutar" class="style-btn editar-btn">
         </form>
-
+    </div>
     <script src = "../../javascript/Function/variables.js"></script>
     <script src = "../../javascript/Function/funtionArrays.js"></script>
     <script src = "../../javascript/dataDbPhp/dataPc.js"></script>

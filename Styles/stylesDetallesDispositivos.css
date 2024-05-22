@@ -191,6 +191,12 @@ body{
     border-radius: 20px;
     margin: 2px;
 }
+.style-input-list{
+    width: 20px;
+    padding: 4px;
+    border-radius: 20px;
+    margin: 2px;
+}
 .parrafo-note{
     width: 100%;
     border-radius: 20px;
@@ -229,4 +235,31 @@ body{
 }
 .desactivar{
     display: none;
+}
+
+/*--Lista de ofinas seleccionada en caso de que el usurio quiera cambiar la ofina del pc--*/
+.conten-form-edit-pc{
+    margin : 10px 0 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.title-edit-info-pc{
+    margin : 20px 0;
+    text-align: center;
+}
+
+.eliminar-equipo {
+    display: flex;
+    justify-content: center;
+}
+.eliminar-equipo form{
+    background-color: var(--blancoGrisaseo);
+    border-radius: 10px;
+    padding: 10px;
+}
+.eliminar-equipo form div{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }

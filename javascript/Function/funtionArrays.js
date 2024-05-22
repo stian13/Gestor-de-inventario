@@ -11,7 +11,10 @@ function llamadoDataPhpNew (ubicacion, tipoFuntion, cuaal, primerOfi){
             }else if(tipoFuntion === 'funcionAllOficinas'){
                 console.log(data);
                 imprecioDataOficina(data, cuaal, primerOfi)
-            } 
+            }else if (tipoFuntion === 'soloTreaOficinas'){
+                console.log(data);
+                colocadorDeOficina(data, oficina)
+            }
         })
 }
 //llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', '', '')
@@ -21,11 +24,42 @@ function dtFromComent() {
     const apodoUserAdmin = document.querySelector('.apodoUser')
     fechaAuto.value = fechaActual
 }
+//CODIGO QUE SE ENCARGA DE COLOCAR TODAS LAS OFICINAS EN CASO DE QUE EL USUARIO QUIERA CAMBIAR DE OFICINA EL EQUIPO
+function colocadorDeOficina(packOficinas, dondeSeInstala) {
+    packOficinas.forEach(element => {
+        const opcionOficina = document.createElement('option');
+        opcionOficina.value = element.id_oficinas; // Usar la ID como valor
+        opcionOficina.text = element.nombre_oficna; // Usar el nombre como texto
+        dondeSeInstala.appendChild(opcionOficina);
+    });
+}
+// Función para manejar el evento de cambio en el select
+function mostrarOpcionSeleccionada() {
+    const selectOficinas = document.getElementById('listOficinas');
+    const opcionSeleccionada = selectOficinas.options[selectOficinas.selectedIndex];
+    
+    // Obtener los inputs
+    const inputOficinaActual = document.getElementById('oficinaActual');
+    const inputIdOficeSelec = document.getElementById('idOficeSelec');
+
+    // Actualizar los valores de los inputs
+    inputOficinaActual.value = opcionSeleccionada.text; // Nombre de la oficina
+    inputIdOficeSelec.value = opcionSeleccionada.value; // ID de la oficina
+}
+
+// Obtener referencia al select
+const selectOficinas = document.getElementById('listOficinas');
+
+// Agregar event listener para el evento de cambio
+selectOficinas.addEventListener('change', mostrarOpcionSeleccionada);
+// fin codigo de selecion de oficina
+
 //Funcion que coloca la informacion en el formulario de un pc
 function colocadorInfoForm(dataObject) {
     invenCd.value = dataObject.codeInvet
     
-    //llamadoDataPhpNew('../../php/db/dataOficina.php', 'tableOficina', 'oficinasFormulario', dataObject.nameOfi)
+    llamadoDataPhpNew('../../php/db/dataOficina.php', 'soloTreaOficinas', '', '')
+    
     tipoComputadora.value = dataObject.tipoPc
     if (dataObject.tipoPc) {
         const option = document.createElement("option")
@@ -34,8 +68,17 @@ function colocadorInfoForm(dataObject) {
         tipoComputadora.appendChild(option)
         console.log(tipoComputadora);
     }
+    tipoComputadora.addEventListener('click', (e)=>{
+        e.preventDefault();
+        tipoPcActual.value = tipoComputadora.value
+    })
+
+    oficinaActual.value = dataObject.nameOfi
+    //datos del computador
+    codePc.value = dataObject.idComputador
     pcMarca.value = dataObject.marcaPc
     pcSn.value = dataObject.sNPc
+    tipoPcActual.value = dataObject.tipoPc
     nameUsuario.value = dataObject.nameUser
     pcModel.value = dataObject.modelo
     cerebroPc.value = dataObject.procesador
@@ -48,15 +91,15 @@ function colocadorInfoForm(dataObject) {
     pcName.value = dataObject.nombrePc
     SO.value = dataObject.so
     lisenceSO.value = dataObject.licenciaSo
-
+    //datos del monitor
     monitorMarca.value = dataObject.monitorMarca
     modelMonitor.value = dataObject.monitorModelo
     monitorSn.value = dataObject.monitorSN
-
+    //datos del mause 
     marcaMause.value = dataObject.marcaMause
     modelMouse.value = dataObject.modeloMuse
     mouseSn.value = dataObject.sNMouse
-
+    //datos del teclado
     keyboardMarca.value = dataObject.marcaTeclado
     keyboardModelo.value = dataObject.modeloTeclado
     keyboardSN.value = dataObject.sNTecaldo
@@ -196,7 +239,7 @@ function rederHtmlInfoPc(objetPc) {
     `;
     
     //const sectorEditInfoPc = document.querySelector('#sectorEditInfoPc')
-    
+    //aca nos permite editar la informacion del pc al darle click al boton de editar, nos mostrara un formulario
     const btnEdition = document.querySelector('#btnEdition')
     btnEdition.classList.remove('desactivar')
         //Botones Internos 
@@ -209,7 +252,21 @@ function rederHtmlInfoPc(objetPc) {
             //sectorEditInfoPc.appendChild(formEditionPc)
         })
     
+    btnEliminar.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const formEliminarPc = document.querySelector('#formEliminarPc')
+        formEliminarPc.classList.remove('desactivar')
+        const idPcEleminar = document.querySelector('#idPcEleminar')
+        idPcEleminar.value = objetPc.idComputador
+        console.log(objetPc.idComputador);
 
+        const cancelarEliminacion = document.querySelector('#cancelarEliminacion')
+        cancelarEliminacion.addEventListener('click', (e)=>{
+            e.preventDefault();
+            idPcEleminar.value = '';
+            formEliminarPc.classList.add('desactivar')
+        })
+    })
     const sectionNotes = document.createElement('section')
     sectionNotes.classList.add('section-notes')
 
