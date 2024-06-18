@@ -1,173 +1,26 @@
 <?php
-session_start();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../Styles/stylesTablaComputadoras.css">
     <link rel="stylesheet" href="../../Styles/stylesDetallesDispositivos.css">
-    <title>Inventario de computadoras</title>
+    <title>Agregar nuevo equipo PC</title>
 </head>
 <body>
-    
-    <header class = "totalHeader">
-        <section class="Container-cabecera">
-                <h1>Inventario de computadoras</h1>
-            <div ><!--logo alcaldia-->
-                <a href="../iniciar-sesion/close.php">
-                    <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
-                </a>
-            </div>
-        </section>
-    </header>
-    <div class = "btnControlTablePc">
-        <div class = "backMenu"><!--logo alcaldia-->
-            <img src="../../Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
-        </div>
-        <div class = "reloadTablaPc"><!--logo alcaldia-->
-            <img src="../../Assets/Img/recargar.png" alt="" class="img-volver">
-        </div>
-    </div>
-    <main class="contentPestañaTable">
-
-        <section class="content-buscador-oficinas"> <!--buscador y oficinas-->
-            <div class="content-oficinas">
-                    <h3 class="titulo-mediano">Oficionas</h3>
-                <div class="content-list-ofice">
-                    <ul class="ulOfice">
-                        
-                    </ul>
-                </div>
-            </div>
-            <!---<div class="buscador">
-                <form action="tu_script_de_búsqueda.php" method="GET">
-                    <input type="text" name="q" placeholder="Buscar..." class="buscador__input">
-                    <button type="submit" class="buscador__boton">
-                        <img src="../../Assets/Img/lupa (1).png" alt="Buscar" class="buscador__lupa-img">
-                    </button>
-                </form>
-            </div>!-->
-        </section>
-
-        <section class="Container-table-data">
-            <h3 class="titulo-mediano margin-izda">Todos los equipos</h3><!--TABLA DE CARACTERISTICAS-->
-
-            <div class="cabecara-table-data">
-                <div class="cabecara-table-data__list-name">
-                    <div class="name-list">Oficina</div>
-                    <div class="name-list">Usuario</div>
-                    <div class="name-list">code_inve</div>
-                    <div class="name-list">Tipo</div>
-                    <div class="name-list">Procesador</div>
-                    <div class="name-list">Almacenamiento</div>
-                    <div class="name-list">Ram</div>
-                </div>
-            </div>
-
-            <div class="container-data-especificaciones">
-                <div class="contenido-tabla">
-    
-                    <!--<div class="cabecara-table-data"> -TABLA DE CARACTERISTICAS
-                    <div class="cabecara-table-data__list-name especificaciones">
-                            <div class="name-list">Salud</div>
-                            <div class="name-list">Camilo santos</div>
-                            <div class="name-list">001</div>
-                            <div class="name-list">portatil</div>
-                            <div class="name-list">ryzen 5 5600x</div>
-                            <div class="name-list">500 GB</div>
-                            <div class="name-list">16 GB</div>
-                        </div>
-                    </div>-->
-                    
-                </div>
-            </div>
-        </section>
-        <!--Boton de agregar-->
-        <button class="agregar-equipo" id = "btnAgregarPC">Agregar equipo</button>
-    </main>
-
-    <!--Seccion donde se miestra los la ingormacion del equipo seleccionado!-->
-
-    <header class="infoPcCase desactivar">
-        <section class="Container-cabecera">
-            <div class = "regresarTablePc"><!--logo alcaldia-->
-                <img src="../../Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
-            </div>
-
-                <h1>Caractaristicas de computadora</h1>
-
-            <div>
-                <a href="../iniciar-sesion/close.php">
-                    <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
-                </a>
-            </div>
-        </section>
-    </header>
-
-    <main class="main-info-dispositivo">
-        
-        <!--Centro de notas-->
-        
-        
-    </main>
-    <section class="section-btn-edition desactivar" id = "btnEdition">
-        <div class="style-btn editar-btn editInfoPc" id = "editInfoPc">Editar</div>
-        <div class="style-btn borra-btn" id = "btnEliminar">Borrar</div>
-    </section>
-    <!--secion donde se borra el equipo-->
-    <div class = "eliminar-equipo ">
-        <form action="./eliminarPc.php" method="post" class="desactivar" id = "formEliminarPc">
-            <h2>¿Seguro que deseas ELIMINAR ESTE EQUIPO?</h2>
-            <input type="num" class = "desactivar" class = "idPcEliminar" id ="idPcEleminar" name = "idPcAEliminar">
-            <div>
-                <input type="submit" value="ELIMINAR" class = "style-btn borra-btn" >
-                <button class = "style-btn editar-btn" id = "cancelarEliminacion">CANCELAR</button>
-            </div>
-        </form>
-    </div>
-    <section id = "sectorEditInfoPc">
-
-    </section>
-    <form class="section-notes meterNota desactivar" action="../db/enviaComentario.php" method="post">
-            <h2 class="color-blanco">Notas</h2>
-            <div class="card-note">
-                <div class="info-basic-nota">
-                    <input type="date" class="fechaAuto" readonly name = "fechaEscrito">
-                    <div>
-                        <p class="blue-title">Encargado del caso :</p>
-                        <input type="text" class="apodoUser" name = "nameAdmin" value="<?= $_SESSION['usuario'] ?>" readonly>
-
-                        <input type="text" class="idCompu desactivar" name = "idPcOmpu">
-                    </div>
-                </div>
-
-                <textarea class="color-gris parrafo-note"  rows="4" name = "texto"></textarea>
-            </div>
-            <section class="section-btn-edition">
-                <input type="submit" class="style-btn editar-btn" value="Guardar">
-            </section>
-    </form>
-    <section class = "newNota">
-
-    </section>
-
-    <!---Seccion de edicion de datos de computadora!-->
-
-    <div class = "conten-form-edit-pc">
-        <form class="info-dispostivo-section desactivar" action="./datosEditPc.php" method="post" id = "formEditionPc">
+<div class = "conten-form-edit-pc">
+        <form class="info-dispostivo-section" action="./dbNewpc.php" method="post" id = "formEditionPc">
             <!--codigo-->
             <div class="code-dispositivo">
                 <label class="blue-title">Codigo Inventario</label>
                 <input type="number"  class="style-input-general" id = "invenCd" name = "invenCode">
-                <input type="number"  class="style-input-general desactivar" id = "pcCd" name = "pcCode">
             </div>
             <!--Carateristicas de ubicacion-->
             <div class="info-ubicacion">
@@ -181,11 +34,11 @@ session_start();
                 </div>
                 <div class="tex-content-info">
                     <h4 class="blue-title">Tipo</h4>
-                    <input type="text" id="tipoPcActual" class="style-input-general" name = "tipoPc">
-                    <select id="tipoComputadora" name="tipo-computadora" class="style-input-list">
-                        <option value="pc-escritorio">PC de escritorio</option>
-                        <option value="todo-en-uno">Todo en uno</option>
-                        <option value="portatil">Portátil</option>
+                    <select id="tipoComputadora" name="tipo-computadora" class="style-input-general">
+                        <option value=""></option>
+                        <option value="pc-escritorio">PC ESCRITORIO</option>
+                        <option value="todo-en-uno">TODO EN UNO</option>
+                        <option value="portatil">PORTATIL</option>
                     </select>
                 </div>
                 <div class="tex-content-info">
@@ -216,7 +69,7 @@ session_start();
                     <input type="text"  id="memoryRam" class="style-input-general" name ="ram">
 
                     <h4 class="blue-title">Tipo</h4>
-                    <select id="ramTipo" name="tipoRam">
+                    <select id="ramTipo" name="tipoRam" class="style-input-general">
                         <option value="DIM">DIM</option>
                         <option value="DDR1">DDR1</option>
                         <option value="DDR2">DDR2</option>
@@ -230,7 +83,7 @@ session_start();
                     <input type="text"  id="almacenDisco" class="style-input-general" name = "capacidadDisco">
 
                     <h4 class="blue-title">Tipo</h4>
-                    <select id="diskType" name="tipoDisco">
+                    <select id="diskType" name="tipoDisco" class="style-input-general">
                         <option value="SSD">SSD</option>
                         <option value="HDD">HDD</option>
                     </select>
@@ -324,12 +177,11 @@ session_start();
                     </div>
                 </div>
             </div>
-            <input type="submit" value="jecutar" class="style-btn editar-btn">
+            <input type="submit" value="Guardar" class="style-btn editar-btn">
         </form>
     </div>
+</body>
     <script src = "../../javascript/Function/variables.js"></script>
     <script src = "../../javascript/Function/funtionArrays.js"></script>
-    <script src = "../../javascript/dataDbPhp/dataPc.js"></script>
-    
-</body>
+    <script src = "../../javascript/Function/agreagEquipoPc.js"></script>
 </html>

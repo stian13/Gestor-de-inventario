@@ -251,7 +251,7 @@ function rederHtmlInfoPc(objetPc) {
             colocadorInfoForm(objetPc)
             //sectorEditInfoPc.appendChild(formEditionPc)
         })
-    
+    //codigo que se encarga de eliminar el dispositivo
     btnEliminar.addEventListener('click', (e)=>{
         e.preventDefault();
         const formEliminarPc = document.querySelector('#formEliminarPc')
@@ -259,7 +259,7 @@ function rederHtmlInfoPc(objetPc) {
         const idPcEleminar = document.querySelector('#idPcEleminar')
         idPcEleminar.value = objetPc.idComputador
         console.log(objetPc.idComputador);
-
+        //este codigo nos permite cancelar la eliminacion del dispositivo
         const cancelarEliminacion = document.querySelector('#cancelarEliminacion')
         cancelarEliminacion.addEventListener('click', (e)=>{
             e.preventDefault();
@@ -267,6 +267,7 @@ function rederHtmlInfoPc(objetPc) {
             formEliminarPc.classList.add('desactivar')
         })
     })
+
     const sectionNotes = document.createElement('section')
     sectionNotes.classList.add('section-notes')
 
@@ -496,6 +497,11 @@ regresarAlMenu.addEventListener ('click', (e)=>{
 reloadTablaPc.addEventListener('click', (e)=>{
     e.preventDefault;
     recargar();
+})
+
+btnAgregarPC.addEventListener('click', (e)=>{
+    e.preventDefault();
+    redirigir('./agregarNewPc.php')
 })
 //invetarioPestañaPrincipal.php
 

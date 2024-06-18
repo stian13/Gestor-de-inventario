@@ -2,7 +2,7 @@
 include ('../db/db.php');
 
 $id_pc_eleminar = $_POST['idPcAEliminar'];
-echo "id del pc a eliminar: " . htmlspecialchars($id_pc_eleminar, ENT_QUOTES, 'UTF-8') . "<br>";
+//echo "id del pc a eliminar: " . htmlspecialchars($id_pc_eleminar, ENT_QUOTES, 'UTF-8') . "<br>";
 
 $query_Eliminar_Pc = "DELETE FROM computadoras WHERE `computadoras`.`id_computador` = ?";
 $stmt = $mysqli->prepare($query_Eliminar_Pc);

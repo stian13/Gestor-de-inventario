@@ -161,3 +161,23 @@ body{
 .desactivar{
     display: none;
 }
+
+/*estilos mensaje*/
+
+.content--mensaje {
+    display: flex;
+    justify-content: center;
+}
+.mensaje{
+    background-color: var(--blanco);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 30px;
+    text-align: center;
+}
+.style-btn-blue{
+    background-color: var(--azul);
+}
+.style-btn-red{
+    background-color: var(--rojo);
+}

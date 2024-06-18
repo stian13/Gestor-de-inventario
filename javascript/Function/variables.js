@@ -57,3 +57,5 @@ const mouseSn = document.querySelector('#mouseSn')
 const keyboardMarca = document.querySelector('#keyboardMarca')
 const keyboardModelo = document.querySelector('#keyboardModelo')
 const keyboardSN = document.querySelector('#keyboardSN')
+//BTN AGREGAR EQUIPO
+const btnAgregarPC = document.querySelector('#btnAgregarPC') 
