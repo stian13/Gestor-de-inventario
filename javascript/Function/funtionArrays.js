@@ -106,6 +106,15 @@ function colocadorInfoForm(dataObject) {
 }
 //esta funcion se ecarga de mostrar la informacion del pc seleccionado 
 function rederHtmlInfoPc(objetPc) {
+
+    for (const key in objetPc) {
+        if (objetPc.hasOwnProperty(key)) {
+            if (typeof objetPc[key] === 'undefined') {
+                objetPc[key] = '';
+            }
+        }
+    }
+
     mainInfoDispositivo.innerHTML = `<!--Especificaciones generales-->
     <section class="info-dispostivo-section">
         <!--codigo-->
@@ -387,6 +396,7 @@ function imprecioDataPc(array, queRederizo){
     //console.log(array[0].comentarios);
     array.forEach(element => {
         //console.log(element.comentarios);
+        
         const objetPc = {
             idComputador : element.id_computador, 
             codeInvet : element.code_invet, 
@@ -405,15 +415,18 @@ function imprecioDataPc(array, queRederizo){
             licenciaSo : element.licencia_so, 
             officev : element.office_v, 
             licenciaOffice : element.licencia_office, 
+            //MAUSE
             marcaMause : element.marca_mause, 
             sNMouse : element.s_n_mouse, 
             modeloMuse : element.modelo_muse, 
+            //TECLADO DATA
             marcaTeclado : element.marca_tecaldo, 
             sNTecaldo : element.s_n_tecaldo, 
-            modeloTeclado : element.modelo_teclado, 
-            monitorMarca : element.monitorMarca,
-            monitorModelo : element.monitorModelo,
-            monitorSn : element.monitorSN,
+            modeloTeclado : element.modelo_teclado,
+            //MONITOR
+            monitorMarca : element.marca_monitor,
+            monitorModelo : element.modelo_monitor,
+            monitorSn : element.s_n_monitor,
             //oficina
             nameOfi : element.nombre_oficna,
             idOficePc : element.id_ofice_pc,
@@ -431,10 +444,12 @@ function imprecioDataPc(array, queRederizo){
                 const dOfice = document.createElement("div")
                 dOfice.classList.add("name-list")
                 dOfice.textContent = element.nombre_oficna
+
                 const nameUser = document.createElement("div")
                 nameUser.classList.add("name-list")
-    
                 nameUser.textContent = element.nameUser
+                console.log();
+                
                 const IdInv = document.createElement("div")
                 IdInv.classList.add("name-list")
                 IdInv.textContent = element.code_invet

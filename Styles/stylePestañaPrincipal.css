@@ -80,7 +80,14 @@ body{
     margin-top: 8px;
     cursor: pointer;
 }
-.boton-agregar .boton-agregar__lista-opciones p{
+
+.boton-agregar .boton-agregar__lista-opciones{
+    display: flex;
+    padding: 10px;
+}
+
+.boton-agregar .boton-agregar__lista-opciones button{
+
     background-color: var(--rojo-bajo);
     cursor: pointer;
     border-radius: 10px;
@@ -89,5 +96,13 @@ body{
     margin: 10px;
 
 }
-
+/*form agregar oficinas*/
+.add-ofice-form-conten{
+    background-color: var(--blanco);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+}
 

@@ -185,12 +185,23 @@ body{
     margin-bottom: 30px;
 }
 /*---- Style formulario e los imputs ----*/
+
+.stile-adda-ofice{
+    width: 150px;
+    padding: 4px;
+    border-radius: 20px;
+    margin: 2px;
+}
+
 .style-input-general{
     width: 100px;
     padding: 4px;
     border-radius: 20px;
     margin: 2px;
 }
+
+
+
 .style-input-list{
     width: 20px;
     padding: 4px;
@@ -278,6 +289,26 @@ body{
     flex-direction: column;
     align-items: center;
 }
+ /*secion de mensajes cuando se agrega la oficina*/
 
+.content-msn-add-ofice {
+    display: flex;
+    justify-content: center;
+}
+.msn-add-ofice{
+    background-color: var(--blanco);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px    ;
+}
+
+.ofice-add{
+    color: var(--rojo);
+}
 
 

@@ -57,9 +57,24 @@ body{
     color: var(--blanco);
     margin: 5px 0;
 }
-.content-oficinas .content-list-ofice ul li{
+.content-oficinas .content-list-ofice {
+    width: 100%; /* Ancho del contenedor padre */
+    max-width: 800px; /* Puedes ajustar esto según tus necesidades */
+    overflow-x: auto; /* Scroll horizontal */
+    overflow-y: hidden; /* Ocultar el scroll vertical */
+    white-space: nowrap; /* Evitar que los elementos se envuelvan */
+    padding: 10px; /* Opcional: agregar relleno interno */
+}
+
+.content-oficinas .content-list-ofice .ulOfice {
+    display: inline-flex; /* Alineación horizontal */
+    padding: 0;
+    margin: 0;
     list-style: none;
-    display: inline-block;
+}
+
+.content-oficinas .content-list-ofice .ulOfice li{
+    display: inline-block; /* Mantener en línea */
     background-color: var(--blanco);
     padding: 4px;
     border-radius: 10px;

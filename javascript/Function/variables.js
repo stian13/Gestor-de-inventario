@@ -59,3 +59,8 @@ const keyboardModelo = document.querySelector('#keyboardModelo')
 const keyboardSN = document.querySelector('#keyboardSN')
 //BTN AGREGAR EQUIPO
 const btnAgregarPC = document.querySelector('#btnAgregarPC') 
+
+//form add afice
+ const btnAddOfice = document.querySelector('#add-ofice-btn')
+ const contenAddOfice = document.querySelector('#conten-add-ofice')
+ 

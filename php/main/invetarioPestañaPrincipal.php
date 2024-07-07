@@ -20,6 +20,7 @@ if ($varsesion == null || $varsesion = '') {
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
     <title>Inicias Sesion</title>
     <link rel="stylesheet" href="../../Styles/stylePestañaPrincipal.css">
+    <link rel="stylesheet" href="../../Styles/stylesDetallesDispositivos.css">
 </head>
 <body>
     <header>
@@ -55,15 +56,27 @@ if ($varsesion == null || $varsesion = '') {
 
         <div class="boton-agregar">
             <div class="boton-agregar__lista-opciones">
-                <p>Agregar Impresora</p>
-                <p>Agregar computador</p>
-                <p>Agreagar Oficina</p>
+
+                <div class = "add-ofice-form-conten desactivar" id = "conten-add-ofice">
+                    <h3>Nombre de la oficina</h3>
+                    <form action="../db/addOfice.php" method="post">
+                        <input type="text" class = "stile-adda-ofice" name = "New-Ofice">
+                        <input type="submit" value="Agregar" class = "style-btn editar-btn">
+                    </form>
+                </div>
+
+                <button class = "btn-add-ofice" id = "add-ofice-btn">Agreagar Oficina</button>
             </div>
-            <img src="../../Assets/Img/boton-agragar.png" alt=""class="boton-agregar__img-agragar">
-            <!--Boton de agreagar-->
         </div>
+            <!-- </div>
+          
+                <img src="../../Assets/Img/boton-agragar.png" alt=""class="boton-agregar__img-agragar">
+            
+            </div> -->
     </main>
+    <script src="../../javascript/Function/variables.js"></script>
     <script src="../../javascript/redirecciones/redirecionar.js"></script>
     <script src="../../javascript/redirecciones/redirecTablaDispo.js"></script>
+    <script src="../../javascript/Function/btnAddOfice.js"></script>
 </body>
 </html>
