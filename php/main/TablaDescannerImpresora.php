@@ -16,46 +16,46 @@ session_start();
     <title>Inventario de computadoras</title>
 </head>
 <body>
-    <header>
+
+    <header class = "totalHeader">
         <section class="Container-cabecera">
+            <h1>Inventario de Impresoras y Scanner</h1>
             <div ><!--logo alcaldia-->
-                <img src="./Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
-            </div>
-
-                <h1>Inventario de Impresoras y Scanner</h1>
-
-            <div><!--logo alcaldia-->
-                <img src="./Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
+                <a href="../iniciar-sesion/close.php">
+                    <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
+                </a>
             </div>
         </section>
     </header>
 
-    <main>
+    <div class = "btnControlTablePc">
+        <div class = "backMenu"><!--logo alcaldia-->
+            <img src="../../Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
+        </div>
+        <div class = "reloadTablaPc"><!--logo alcaldia-->
+            <img src="../../Assets/Img/recargar.png" alt="" class="img-volver">
+        </div>
+    </div>
 
+    <main class="contentPestañaTable">
         <section class="content-buscador-oficinas"> <!--buscador y oficinas-->
-            <div class="content-oficinas">
-                    <h3 class="titulo-mediano">Oficionas</h3>
-                <div class="content-list-ofice">
-                    <ul>
-                        <li>Oficiona tal</li>
-                        <li>Oficiona tal</li>
-                        <li>Oficiona tal</li>
-                        <li>Oficiona tal</li>
-                        <li>Oficiona tal</li>
-                        <li>Oficiona tal</li>
-                        <li>Oficiona tal</li>
-                    </ul>
+                <div class="content-oficinas">
+                        <h3 class="titulo-mediano">Oficionas</h3>
+                    <div class="content-list-ofice">
+                        <ul class="ulOfice">
+                            
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="buscador">
-                <form action="tu_script_de_búsqueda.php" method="GET">
-                    <input type="text" name="q" placeholder="Buscar..." class="buscador__input">
-                    <button type="submit" class="buscador__boton">
-                        <img src="/Assets/Img/lupa (1).png" alt="Buscar" class="buscador__lupa-img">
-                    </button>
-                </form>
-            </div>
-        </section>
+                <!---<div class="buscador">
+                    <form action="tu_script_de_búsqueda.php" method="GET">
+                        <input type="text" name="q" placeholder="Buscar..." class="buscador__input">
+                        <button type="submit" class="buscador__boton">
+                            <img src="../../Assets/Img/lupa (1).png" alt="Buscar" class="buscador__lupa-img">
+                        </button>
+                    </form>
+                </div>!-->
+            </section>
 
         <section class="Container-table-data">
             <h3 class="titulo-mediano margin-izda">Todos los equipos</h3><!--TABLA DE CARACTERISTICAS-->
@@ -63,7 +63,6 @@ session_start();
             <div class="cabecara-table-data">
                 <div class="cabecara-table-data__list-name">
                     <div class="name-list">Oficina</div>
-                    <div class="name-list">Usuario</div>
                     <div class="name-list">code_inve</div>
                     <div class="name-list">Tipo</div>
                     <div class="name-list">Marca</div>
@@ -74,10 +73,9 @@ session_start();
             <div class="container-data-especificaciones">
                 <div class="contenido-tabla">
     
-                    <div class="cabecara-table-data"> <!--TABLA DE CARACTERISTICAS-->
+                    <!--
                         <div class="cabecara-table-data__list-name especificaciones">
                             <div class="name-list">Salud</div>
-                            <div class="name-list">Camilo santos</div>
                             <div class="name-list">001</div>
                             <div class="name-list">Sacanner</div>
                             <div class="name-list">HP</div>
@@ -85,22 +83,35 @@ session_start();
                             <div class="name-list">12238857810</div>
                         </div>
                     </div>
-                    <div class="cabecara-table-data"> <!--TABLA DE CARACTERISTICAS-->
-                        <div class="cabecara-table-data__list-name especificaciones">
-                            <div class="name-list">Salud</div>
-                            <div class="name-list">Camilo santos</div>
-                            <div class="name-list">001</div>
-                            <div class="name-list">Sacanner</div>
-                            <div class="name-list">HP</div>
-                            <div class="name-list">HP Jept laser jpjh55</div>
-                            <div class="name-list">12238857810</div>
-                        </div>
-                    </div>
+                    -->
+                    
                 </div>
             </div>
         </section>
         <!--Boton de agregar-->
-        <button class="agregar-equipo">Agregar equipo</button>
+        <button class="agregar-equipo" id = "btnAgregarPC">Agregar equipo</button>
     </main>
+
+    <header class="infoPcCase desactivar">
+        <section class="Container-cabecera">
+            <div class = "regresarTablePc"><!--logo alcaldia-->
+                <img src="../../Assets/Img/flecha-izquierda.png" alt="" class="img-volver">
+            </div>
+
+                <h1>Caractaristicas de computadora</h1>
+
+            <div>
+                <a href="../iniciar-sesion/close.php">
+                    <img src="../../Assets/Img/cerrar-sesion.png" alt="" class="img-salir">
+                </a>
+            </div>
+        </section>
+    </header>
+
 </body>
+    <script src = "../../javascript/Function/location.js"></script>
+    <script src = "../../javascript/Function/variables.js"></script>
+    <script src = "../../javascript/Function/consultas.js"></script>
+    <script src = "../../javascript/Function/funtionArrays.js"></script>
+    <script src = "../../javascript/dataDbPhp/dataPc.js"></script>
 </html>

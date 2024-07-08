@@ -26,14 +26,18 @@ function llamadoDataPhp (ubicacion, tipoFuntion){
                 imprecioDataPc(data, comova)
             }else if(tipoFuntion === 'tableOficina'){
                 imprecioDataOficina(data)
-            } else if (tipoFuntion === ''){
-                console.log(data);
             }
         })
 }
+if (cleanUrl === urlPc) {
+    mostrarInfoPcOrImpresora = "pc"
+    llamadoDataPhp('../../php/db/dataTablePc.php', 'tablePc')
+}else if (cleanUrl === urlImpresora){
+    mostrarInfoPcOrImpresora = "impresora"
+    llamadoDataPhp('../../php/db/dataTableImpresora.php', 'tablePc')
+}
+//llamadoDataPhp('../../php/db/dataOficina.php', 'tableOficina')
 
-llamadoDataPhp('../../php/db/dataTablePc.php', 'tablePc')
-llamadoDataPhp('../../php/db/dataOficina.php', 'tableOficina')
 
  
 

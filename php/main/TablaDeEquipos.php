@@ -327,9 +327,10 @@ session_start();
             <input type="submit" value="jecutar" class="style-btn editar-btn">
         </form>
     </div>
+    <script src = "../../javascript/Function/location.js"></script>
     <script src = "../../javascript/Function/variables.js"></script>
+    <script src = "../../javascript/Function/consultas.js"></script>
     <script src = "../../javascript/Function/funtionArrays.js"></script>
     <script src = "../../javascript/dataDbPhp/dataPc.js"></script>
-    
 </body>
 </html>

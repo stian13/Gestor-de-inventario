@@ -1,23 +1,5 @@
-let comova = "";
-function llamadoDataPhpNew (ubicacion, tipoFuntion, cuaal, primerOfi){
-    fetch(ubicacion)
-    .then(response => response.json())
-    .then(data => {
-        // Aquí 'data' contendrá los datos del resultado de la consulta
-            if (tipoFuntion === 'tablePc') {
-                
-                imprecioDataPc(data, cuaal)
-                console.log(data);
-            }else if(tipoFuntion === 'funcionAllOficinas'){
-                console.log(data);
-                imprecioDataOficina(data, cuaal, primerOfi)
-            }else if (tipoFuntion === 'soloTreaOficinas'){
-                console.log(data);
-                colocadorDeOficina(data, oficina)
-            }
-        })
-}
-//llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', '', '')
+
+llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', '', '')
 function dtFromComent() {
     const fechaAuto = document.querySelector('.fechaAuto')
     const fechaActual = new Date().toISOString().split('T')[0];
@@ -48,10 +30,10 @@ function mostrarOpcionSeleccionada() {
 }
 
 // Obtener referencia al select
-const selectOficinas = document.getElementById('listOficinas');
+//------------const selectOficinas = document.getElementById('listOficinas');
 
 // Agregar event listener para el evento de cambio
-selectOficinas.addEventListener('change', mostrarOpcionSeleccionada);
+//------------selectOficinas.addEventListener('change', mostrarOpcionSeleccionada);
 // fin codigo de selecion de oficina
 
 //Funcion que coloca la informacion en el formulario de un pc
@@ -368,6 +350,14 @@ function imprecioDataOficina(dataOfici, typeTarea, nameOneOfi) {
                 contenidoTabla.innerHTML = ''
                 comova = element.nombre_oficna
                 llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', comova)
+                
+                /*
+                if (cleanUrl == urlPc){
+                    llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', comova)
+                }else if (cleanUrl == urlImpresora){
+                    //llamadoDataPhpNew('../../php/db/dataTableImpresora.php', 'tablePc', comova)
+                    console.log("es impresora");
+                }*/
                 console.log("me he ejecutado");
             })
         });
@@ -393,102 +383,163 @@ llamadoDataPhpNew('../../php/db/dataOficina.php', 'funcionAllOficinas', 'todasLa
 
 //la funcion imprecionDataPc inprime la lista de pc que hay
 function imprecioDataPc(array, queRederizo){
-    //console.log(array[0].comentarios);
-    array.forEach(element => {
-        //console.log(element.comentarios);
-        
-        const objetPc = {
-            idComputador : element.id_computador, 
-            codeInvet : element.code_invet, 
-            nombrePc : element.nombre_pc, 
-            nameUser : element.nameUser, 
-            tipoPc : element.tipo_pc, 
-            marcaPc : element.marca_pc, 
-            sNPc : element.s_n_pc, 
-            modelo : element.modelo, 
-            procesador : element.procesador, 
-            ram : element.ram, 
-            tipoRam : element.tipo_ram, 
-            almacenamiento : element.almacenamiento, 
-            tipoDisco : element.tipo_disco, 
-            so : element.so, 
-            licenciaSo : element.licencia_so, 
-            officev : element.office_v, 
-            licenciaOffice : element.licencia_office, 
-            //MAUSE
-            marcaMause : element.marca_mause, 
-            sNMouse : element.s_n_mouse, 
-            modeloMuse : element.modelo_muse, 
-            //TECLADO DATA
-            marcaTeclado : element.marca_tecaldo, 
-            sNTecaldo : element.s_n_tecaldo, 
-            modeloTeclado : element.modelo_teclado,
-            //MONITOR
-            monitorMarca : element.marca_monitor,
-            monitorModelo : element.modelo_monitor,
-            monitorSn : element.s_n_monitor,
-            //oficina
-            nameOfi : element.nombre_oficna,
-            idOficePc : element.id_ofice_pc,
-            //comentarios
-            comentario : element.comentarios,
-        }
-        
-        if (element.nombre_oficna === queRederizo || queRederizo === "") {
-            const cabecaraTableData = document.createElement("div")
-            cabecaraTableData.classList.add("cabecara-table-data")
-    
-            const cabecaraTableDataListName = document.createElement("div")
-            cabecaraTableDataListName.classList.add("cabecara-table-data__list-name", "especificaciones")
-                //datos
-                const dOfice = document.createElement("div")
-                dOfice.classList.add("name-list")
-                dOfice.textContent = element.nombre_oficna
-
-                const nameUser = document.createElement("div")
-                nameUser.classList.add("name-list")
-                nameUser.textContent = element.nameUser
-                console.log();
+    console.log(mostrarInfoPcOrImpresora);
+        if (mostrarInfoPcOrImpresora === "pc") {
+            array.forEach(element => {
+                const objetPc = {
+                    idComputador : element.id_computador, 
+                    codeInvet : element.code_invet, 
+                    nombrePc : element.nombre_pc, 
+                    nameUser : element.nameUser, 
+                    tipoPc : element.tipo_pc, 
+                    marcaPc : element.marca_pc, 
+                    sNPc : element.s_n_pc, 
+                    modelo : element.modelo, 
+                    procesador : element.procesador, 
+                    ram : element.ram, 
+                    tipoRam : element.tipo_ram, 
+                    almacenamiento : element.almacenamiento, 
+                    tipoDisco : element.tipo_disco, 
+                    so : element.so, 
+                    licenciaSo : element.licencia_so, 
+                    officev : element.office_v, 
+                    licenciaOffice : element.licencia_office, 
+                    //MAUSE
+                    marcaMause : element.marca_mause, 
+                    sNMouse : element.s_n_mouse, 
+                    modeloMuse : element.modelo_muse, 
+                    //TECLADO DATA
+                    marcaTeclado : element.marca_tecaldo, 
+                    sNTecaldo : element.s_n_tecaldo, 
+                    modeloTeclado : element.modelo_teclado,
+                    //MONITOR
+                    monitorMarca : element.marca_monitor,
+                    monitorModelo : element.modelo_monitor,
+                    monitorSn : element.s_n_monitor,
+                    //oficina
+                    nameOfi : element.nombre_oficna,
+                    idOficePc : element.id_ofice_pc,
+                    //comentarios
+                    comentario : element.comentarios,
+                }
                 
-                const IdInv = document.createElement("div")
-                IdInv.classList.add("name-list")
-                IdInv.textContent = element.code_invet
-    
-                const typePc = document.createElement("div")
-                typePc.classList.add("name-list")
-                typePc.textContent = element.tipo_pc
-    
-                const cpu = document.createElement("div")
-                cpu.classList.add("name-list")
-                cpu.textContent = element.procesador
-    
-                const disco = document.createElement("div")
-                disco.classList.add("name-list")
-                disco.textContent = element.almacenamiento
-    
-                const meRam = document.createElement("div")
-                meRam.classList.add("name-list")
-                meRam.textContent = element.ram
-    
-                
-                cabecaraTableDataListName.append(dOfice,nameUser,IdInv,typePc,cpu,disco,meRam)
-                contenidoTabla.append(cabecaraTableData,cabecaraTableDataListName)
-    
-            //Escuchador de eventos
+                if (element.nombre_oficna === queRederizo || queRederizo === "") {
+                    const cabecaraTableData = document.createElement("div")
+                    cabecaraTableData.classList.add("cabecara-table-data")
             
-            cabecaraTableDataListName.addEventListener('click', function (e) {
-                e.preventDefault();
-                contentPestañaTable.classList.add("desactivar")
-                
-                infoPcCase.classList.remove("desactivar")
-
-                totalHeader.classList.add("desactivar")
-                btnControlTablePc.classList.add("desactivar")
-                console.log(objetPc.comentario);
-                rederHtmlInfoPc(objetPc);
-            });
+                    const cabecaraTableDataListName = document.createElement("div")
+                    cabecaraTableDataListName.classList.add("cabecara-table-data__list-name", "especificaciones")
+                        //datos
+                        const dOfice = document.createElement("div")
+                        dOfice.classList.add("name-list")
+                        dOfice.textContent = element.nombre_oficna
+        
+                        const nameUser = document.createElement("div")
+                        nameUser.classList.add("name-list")
+                        nameUser.textContent = element.nameUser
+                        console.log();
+                        
+                        const IdInv = document.createElement("div")
+                        IdInv.classList.add("name-list")
+                        IdInv.textContent = element.code_invet
+            
+                        const typePc = document.createElement("div")
+                        typePc.classList.add("name-list")
+                        typePc.textContent = element.tipo_pc
+            
+                        const cpu = document.createElement("div")
+                        cpu.classList.add("name-list")
+                        cpu.textContent = element.procesador
+            
+                        const disco = document.createElement("div")
+                        disco.classList.add("name-list")
+                        disco.textContent = element.almacenamiento
+            
+                        const meRam = document.createElement("div")
+                        meRam.classList.add("name-list")
+                        meRam.textContent = element.ram
+            
+                        
+                        cabecaraTableDataListName.append(dOfice,nameUser,IdInv,typePc,cpu,disco,meRam)
+                        contenidoTabla.append(cabecaraTableData,cabecaraTableDataListName)
+            
+                    //Escuchador de eventos
+                    
+                    cabecaraTableDataListName.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        contentPestañaTable.classList.add("desactivar")
+                        
+                        infoPcCase.classList.remove("desactivar")
+        
+                        totalHeader.classList.add("desactivar")
+                        btnControlTablePc.classList.add("desactivar")
+                        console.log(objetPc.comentario);
+                        rederHtmlInfoPc(objetPc);
+                    });
+                }
+            })
+        } else if (mostrarInfoPcOrImpresora === "impresora"){
+            array.forEach(element => {
+                console.log(array);
+                const objetImpScan = {
+                    idImpScan : element.id_imp_scan,
+                    codeInventInt : element.code_invent_int,
+                    marca : element.marca,
+                    nombreModelo : element.nombre_modelo,
+                    tipoImpresora : element.tipo_impresora,
+                    idOficinaImpre : element.id_oficina_impre,
+                    sNImpresora : element.s_n_impresora,
+                    //comentarios
+                    comentario : element.comentarios,
+                }
+                if (element.id_oficina_impre === queRederizo || queRederizo === "") {
+                    const cabecaraTableDataListName = document.createElement("div")
+                    cabecaraTableDataListName.classList.add("cabecara-table-data__list-name", "especificaciones")
+                        //datos
+                        const dOfice = document.createElement("div")
+                        dOfice.classList.add("name-list")
+                        dOfice.textContent = element.nombre_oficna
+        
+                        const codeInventInt = document.createElement("div")
+                        codeInventInt.classList.add("name-list")
+                        codeInventInt.textContent = element.code_invent_int
+                        console.log();
+                        
+                        const tipoDipositivo = document.createElement("div")
+                        tipoDipositivo.classList.add("name-list")
+                        tipoDipositivo.textContent = element.tipo_impresora
+            
+                        const marcaDispositivo = document.createElement("div")
+                        marcaDispositivo.classList.add("name-list")
+                        marcaDispositivo.textContent = element.marca
+            
+                        const modeloEquipo = document.createElement("div")
+                        modeloEquipo.classList.add("name-list")
+                        modeloEquipo.textContent = element.nombre_modelo
+            
+                        const sNEquipo = document.createElement("div")
+                        sNEquipo.classList.add("name-list")
+                        sNEquipo.textContent = element.s_n_impresora
+    
+                        cabecaraTableDataListName.append(dOfice,codeInventInt,tipoDipositivo,marcaDispositivo,modeloEquipo,sNEquipo)
+                        contenidoTabla.append(cabecaraTableDataListName)
+            
+                    //Escuchador de eventos
+                    /*
+                    cabecaraTableDataListName.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        contentPestañaTable.classList.add("desactivar")
+                        
+                        infoPcCase.classList.remove("desactivar")
+        
+                        totalHeader.classList.add("desactivar")
+                        btnControlTablePc.classList.add("desactivar")
+                        console.log(objetPc.comentario);
+                        rederHtmlInfoPc(objetPc);
+                    });*/
+                }
+            })
         }
-    })
     //imprecioDataOficina(array)
 }
 
