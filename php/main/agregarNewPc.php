@@ -24,14 +24,14 @@
             </div>
             <!--Carateristicas de ubicacion-->
             <div class="info-ubicacion">
-                <div class="tex-content-info">
-                    <h4 class="blue-title" for="tipo-computadora" >Nombre de Oficina</h4>
-                    <input type="text" id="oficinaActual" class="style-input-general" name = "oficinaActual">
-                    <input type="text" id="idOficeSelec" class="style-input-general desactivar" name = "idOfinaSeleccionada">
-                    <select id="listOficinas" name="oficina" class="style-input-list">
-                        
-                    </select>
-                </div>
+            <div class="tex-content-info">
+                        <h4 class="blue-title" for="tipo-computadora" >Nombre de Oficina</h4>
+                        <input type="text" id="oficinaActual" class="style-input-general" name = "oficinaActual">
+                        <input type="text" id="idOficeSelec" class="style-input-general desactivar" name = "idOfinaSeleccionada">
+                        <select id="listOficinas" name="oficina" class="style-input-list">
+                            
+                        </select>
+                    </div>
                 <div class="tex-content-info">
                     <h4 class="blue-title">Tipo</h4>
                     <select id="tipoComputadora" name="tipo-computadora" class="style-input-general">
@@ -182,6 +182,7 @@
     </div>
 </body>
     <script src = "../../javascript/Function/variables.js"></script>
+    <script src = "../../javascript/Function/consultas.js"></script>
     <script src = "../../javascript/Function/funtionArrays.js"></script>
     <script src = "../../javascript/Function/agreagEquipoPc.js"></script>
 </html>

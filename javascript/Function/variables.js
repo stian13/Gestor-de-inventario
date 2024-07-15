@@ -58,9 +58,15 @@ const keyboardMarca = document.querySelector('#keyboardMarca')
 const keyboardModelo = document.querySelector('#keyboardModelo')
 const keyboardSN = document.querySelector('#keyboardSN')
 //BTN AGREGAR EQUIPO
-const btnAgregarPC = document.querySelector('#btnAgregarPC') 
+const btnAgregarPC = document.querySelector('#btnAgregar') 
 
 //form add afice
  const btnAddOfice = document.querySelector('#add-ofice-btn')
  const contenAddOfice = document.querySelector('#conten-add-ofice')
- 
+
+ // info impresora
+ const idPrincipalDispositivo = document.querySelector ('#idPrincipalDispositivo')
+ const tipoimpScan = document.querySelector ('#tipoimpScan')
+ const sNImpScan = document.querySelector('#sNImpScan')
+ const modeloImpScan = document.querySelector('#modeloImpScan')
+ const marcaImpScan = document.querySelector('#marcaImpScan')

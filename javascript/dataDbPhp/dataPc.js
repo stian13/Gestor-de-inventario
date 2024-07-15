@@ -17,7 +17,7 @@ class octenedorDatos {
 
 
 
-function llamadoDataPhp (ubicacion, tipoFuntion){
+function llamadoDataPhp (ubicacion, tipoFuntion, comoVa){
     fetch(ubicacion)
     .then(response => response.json())
     .then(data => {
@@ -26,6 +26,8 @@ function llamadoDataPhp (ubicacion, tipoFuntion){
                 imprecioDataPc(data, comova)
             }else if(tipoFuntion === 'tableOficina'){
                 imprecioDataOficina(data)
+            }else if (tipoFuntion === 'tablePcFiltrado'){
+                imprecioDataPc(data, comoVa)
             }
         })
 }

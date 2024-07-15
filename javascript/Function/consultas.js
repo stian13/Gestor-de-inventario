@@ -5,7 +5,7 @@ function llamadoDataPhpNew (ubicacion, tipoFuntion, cuaal, primerOfi){
     .then(response => response.json())
     .then(data => {
         // Aquí 'data' contendrá los datos del resultado de la consulta
-            if (tipoFuntion === 'tablePc') {
+            if (tipoFuntion === 'mostrar') {
                 //imprecioDataPc(data, cuaal)
             }else if(tipoFuntion === 'funcionAllOficinas'){
                 imprecioDataOficina(data, cuaal, primerOfi)

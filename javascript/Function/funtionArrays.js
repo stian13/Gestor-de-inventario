@@ -30,10 +30,10 @@ function mostrarOpcionSeleccionada() {
 }
 
 // Obtener referencia al select
-//------------const selectOficinas = document.getElementById('listOficinas');
+const selectOficinas = document.getElementById('listOficinas');
 
 // Agregar event listener para el evento de cambio
-//------------selectOficinas.addEventListener('change', mostrarOpcionSeleccionada);
+selectOficinas.addEventListener('change', mostrarOpcionSeleccionada);
 // fin codigo de selecion de oficina
 
 //Funcion que coloca la informacion en el formulario de un pc
@@ -86,254 +86,426 @@ function colocadorInfoForm(dataObject) {
     keyboardModelo.value = dataObject.modeloTeclado
     keyboardSN.value = dataObject.sNTecaldo
 }
+function colocadorInfoFormScan(objeto) {
+    invenCd.value = objeto.codeInventInt
+    llamadoDataPhpNew('../../php/db/dataOficina.php', 'soloTreaOficinas', '', '')
+    tipoPcActual.value = objeto.tipoImpresora
+    console.log(objeto.tipoImpresora);
+    if (objeto.tipoImpresora) {
+        const option = document.createElement("option")
+        option.value = objeto.tipoImpresora + " uno "
+        option.textContent = objeto.tipoImpresora + " uno "
+        tipoimpScan.appendChild(option)
+        console.log(tipoimpScan);
+    }
+    tipoimpScan.addEventListener('click', (e)=>{
+        e.preventDefault();
+        tipoPcActual.value = tipoimpScan.value
+    })
+    
+    idPrincipalDispositivo.value = objeto.idImpScan
+    oficinaActual.value = objeto.nameOficina
+    console.log(idPrincipalDispositivo.value);
+    sNImpScan.value = objeto.sNImpresora
+    modeloImpScan.value = objeto.nombreModelo
+    marcaImpScan.value = objeto.marca
+}
 //esta funcion se ecarga de mostrar la informacion del pc seleccionado 
-function rederHtmlInfoPc(objetPc) {
+function rederHtmlInfoPc(objetPc, tipoSolicitud) {
 
-    for (const key in objetPc) {
-        if (objetPc.hasOwnProperty(key)) {
-            if (typeof objetPc[key] === 'undefined') {
-                objetPc[key] = '';
+    if (tipoSolicitud == "pc") {
+        for (const key in objetPc) {
+            if (objetPc.hasOwnProperty(key)) {
+                if (typeof objetPc[key] === 'undefined') {
+                    objetPc[key] = '';
+                }
             }
         }
-    }
 
-    mainInfoDispositivo.innerHTML = `<!--Especificaciones generales-->
-    <section class="info-dispostivo-section">
-        <!--codigo-->
-        <div class="code-dispositivo">
-            <h3 class="blue-title">Codigo Inventario</h3>
-            <p>${objetPc.codeInvet}</p>
-        </div>
-        <!--Carateristicas de ubicacion-->
-        <div class="info-ubicacion">
-            <div class="tex-content-info">
-                <h4 class="blue-title">Nombre de Oficina</h4>
-                <p>${objetPc.nameOfi}</p>
+        mainInfoDispositivo.innerHTML = `<!--Especificaciones generales-->
+        <section class="info-dispostivo-section">
+            <!--codigo-->
+            <div class="code-dispositivo">
+                <h3 class="blue-title">Codigo Inventario</h3>
+                <p>${objetPc.codeInvet}</p>
             </div>
-            <div class="tex-content-info">
-                <h4 class="blue-title">Tipo</h4>
-                <p>${objetPc.tipoPc}</p>
-            </div>
-            <div class="tex-content-info">
-                <h4 class="blue-title">Marca</h4>
-                <p>${objetPc.marcaPc}</p>
-            </div>
-            <div class="tex-content-info">
-                <h4 class="blue-title" >S/N</h4>
-                <p>${objetPc.sNPc}</p>
-            </div>
-            <div class="tex-content-info">
-                <h4 class="blue-title">Nombre de Usuario</h4>
-                <p>${objetPc.nameUser}</p>
-            </div>
-        </div>
-        <!--Caracteristicas Tecnicas-->
-        <div class="especificaciones-tecnicas-content">
-            <div class="info-tecnica-tex-div">
-                <h4 class="blue-title">Modelo</h4>
-                <p>${objetPc.modelo}</p>
-            </div>
-            <div class="info-tecnica-tex-div">
-                <h4 class="blue-title" >Peocesador</h4>
-                <p>${objetPc.procesador}</p>
-            </div>
-            <div class="info-tecnica-tex-div">
-                <h4 class="blue-title" >Memoria RAM</h4>
-                <p>${objetPc.ram}</p>
-
-                <h4 class="blue-title">Tipo</h4>
-                <p>${objetPc.tipoRam}</p>
-            </div>
-            <div class="info-tecnica-tex-div">
-                <h4 class="blue-title">Almacenamiento</h4>
-                <p>${objetPc.almacenamiento}</p>
-
-                <h4 class="blue-title">Tipo</h4>
-                <p>${objetPc.tipoDisco}</p>
-            </div>
-            <div class="info-tecnica-tex-div">
-                <h4 class="blue-title">OFFICE VERSION</h4>
-                <p>${objetPc.officev}</p>
-
-                <h4 class="blue-title">licencia</h4>
-                <p>${objetPc.licenciaOffice}</p>
-            </div>
-            <div class="info-tecnica-tex-div">
-                <h4 class="blue-title">Nombre de Equipo</h4>
-                <p>${objetPc.nombrePc}</p>
-            </div>
-            <div class="info-tecnica-tex-div">
-                <h4 class="blue-title ">Sistema Operativo</h4>
-                <p>${objetPc.so}</p>
-
-                <h4 class="blue-title">licencia</h4>
-                <p>${objetPc.licenciaSo}</p>
-            </div>
-        </div>
-        <hr class="linea-divisora">
-        <!--Caracteristicas perifericos-->
-        <div class="content-perifericos">
-            <h4 class="blue-title">Monitor</h4>
-            <div class="periferico">
+            <!--Carateristicas de ubicacion-->
+            <div class="info-ubicacion">
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Nombre de Oficina</h4>
+                    <p>${objetPc.nameOfi}</p>
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Tipo</h4>
+                    <p>${objetPc.tipoPc}</p>
+                </div>
                 <div class="tex-content-info">
                     <h4 class="blue-title">Marca</h4>
-                    <p>${objetPc.monitorMarca}</p>
-                </div>
-                <div class="tex-content-info"> 
-                    <h4 class="blue-title">Modelo</h4>
-                    <p>${objetPc.monitorModelo}</p>
+                    <p>${objetPc.marcaPc}</p>
                 </div>
                 <div class="tex-content-info">
-                    <h4 class="blue-title">Codigo S/N</h4>
-                    <p>${objetPc.monitorSn}</p>
-                </div>
-                
-            </div>
-        </div>
-        <hr class="linea-divisora">
-        <div class="content-perifericos">
-            <h4 class="blue-title">Mouse</h4>
-            <div class="periferico">
-                <div class="tex-content-info">
-                    <h4 class="blue-title">Marca</h4>
-                    <p>${objetPc.marcaMause}</p>
+                    <h4 class="blue-title" >S/N</h4>
+                    <p>${objetPc.sNPc}</p>
                 </div>
                 <div class="tex-content-info">
-                    <h4 class="blue-title">Modelo</h4>
-                    <p>${objetPc.modeloMuse}</p>
-                </div>
-                <div class="tex-content-info">
-                    <h4 class="blue-title">Codigo S/N</h4>
-                    <p>${objetPc.sNMouse}</p>
+                    <h4 class="blue-title">Nombre de Usuario</h4>
+                    <p>${objetPc.nameUser}</p>
                 </div>
             </div>
-        </div>
-        <hr class="linea-divisora">
-        <div class="content-perifericos">
-            <h4 class="blue-title">Teclado</h4>
-            <div class="periferico">
-                <div class="tex-content-info">
-                    <h4 class="blue-title">Marca</h4>
-                    <p>${objetPc.marcaTeclado}</p>
-                </div>
-                <div class="tex-content-info">
+            <!--Caracteristicas Tecnicas-->
+            <div class="especificaciones-tecnicas-content">
+                <div class="info-tecnica-tex-div">
                     <h4 class="blue-title">Modelo</h4>
-                    <p>${objetPc.modeloTeclado}</p>
+                    <p>${objetPc.modelo}</p>
                 </div>
-                <div class="tex-content-info">
-                    <h4 class="blue-title">Codigo S/N</h4>
-                    <p>${objetPc.sNTecaldo}</p>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title" >Peocesador</h4>
+                    <p>${objetPc.procesador}</p>
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title" >Memoria RAM</h4>
+                    <p>${objetPc.ram}</p>
+
+                    <h4 class="blue-title">Tipo</h4>
+                    <p>${objetPc.tipoRam}</p>
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title">Almacenamiento</h4>
+                    <p>${objetPc.almacenamiento}</p>
+
+                    <h4 class="blue-title">Tipo</h4>
+                    <p>${objetPc.tipoDisco}</p>
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title">OFFICE VERSION</h4>
+                    <p>${objetPc.officev}</p>
+
+                    <h4 class="blue-title">licencia</h4>
+                    <p>${objetPc.licenciaOffice}</p>
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title">Nombre de Equipo</h4>
+                    <p>${objetPc.nombrePc}</p>
+                </div>
+                <div class="info-tecnica-tex-div">
+                    <h4 class="blue-title ">Sistema Operativo</h4>
+                    <p>${objetPc.so}</p>
+
+                    <h4 class="blue-title">licencia</h4>
+                    <p>${objetPc.licenciaSo}</p>
                 </div>
             </div>
-        </div>
-    </section>
-    `;
-    
-    //const sectorEditInfoPc = document.querySelector('#sectorEditInfoPc')
-    //aca nos permite editar la informacion del pc al darle click al boton de editar, nos mostrara un formulario
-    const btnEdition = document.querySelector('#btnEdition')
-    btnEdition.classList.remove('desactivar')
-        //Botones Internos 
-        const editInfoPc = document.querySelector('#editInfoPc')
-        mainInfoDispositivo.appendChild(btnEdition)
-        editInfoPc.addEventListener('click', (e)=>{
-            e.preventDefault();
-            formEditionPc.classList.remove('desactivar')
-            colocadorInfoForm(objetPc)
-            //sectorEditInfoPc.appendChild(formEditionPc)
-        })
-    //codigo que se encarga de eliminar el dispositivo
-    btnEliminar.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const formEliminarPc = document.querySelector('#formEliminarPc')
-        formEliminarPc.classList.remove('desactivar')
-        const idPcEleminar = document.querySelector('#idPcEleminar')
-        idPcEleminar.value = objetPc.idComputador
-        console.log(objetPc.idComputador);
-        //este codigo nos permite cancelar la eliminacion del dispositivo
-        const cancelarEliminacion = document.querySelector('#cancelarEliminacion')
-        cancelarEliminacion.addEventListener('click', (e)=>{
-            e.preventDefault();
-            idPcEleminar.value = '';
-            formEliminarPc.classList.add('desactivar')
-        })
-    })
-
-    const sectionNotes = document.createElement('section')
-    sectionNotes.classList.add('section-notes')
-
-    const titleNota = document.createElement('h2')
-    titleNota.classList.add("color-blanco")
-    titleNota.textContent = "Notas"
-    
-//<div class="style-btn add-note-btn">Agregar nota</div>
-    const btnAgregarNota = document.createElement('button')
-    btnAgregarNota.classList.add("style-btn", "add-note-btn")
-    btnAgregarNota.innerText = "Agregar Nota"
-    sectionNotes.append(titleNota)
-        console.log(objetPc.comentario);
-
-        objetPc.comentario.forEach(infoComent => {
-            if (infoComent.fecha == null && infoComent.nombre_user == null && infoComent.nota_pc == null) {
-                return
-            }
-            sectionNotes.innerHTML += `
-            <div class="card-note">
-                <div class="info-basic-nota">
-                    <h4 class="blue-title">${infoComent.fecha}</h4>
-                    <div>
-                        <p class="blue-title">Encargado del caso :</p>
-                        <p>${infoComent.nombre_user}</p>
+            <hr class="linea-divisora">
+            <!--Caracteristicas perifericos-->
+            <div class="content-perifericos">
+                <h4 class="blue-title">Monitor</h4>
+                <div class="periferico">
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Marca</h4>
+                        <p>${objetPc.monitorMarca}</p>
+                    </div>
+                    <div class="tex-content-info"> 
+                        <h4 class="blue-title">Modelo</h4>
+                        <p>${objetPc.monitorModelo}</p>
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Codigo S/N</h4>
+                        <p>${objetPc.monitorSn}</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <hr class="linea-divisora">
+            <div class="content-perifericos">
+                <h4 class="blue-title">Mouse</h4>
+                <div class="periferico">
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Marca</h4>
+                        <p>${objetPc.marcaMause}</p>
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Modelo</h4>
+                        <p>${objetPc.modeloMuse}</p>
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Codigo S/N</h4>
+                        <p>${objetPc.sNMouse}</p>
                     </div>
                 </div>
-    
-                <p class="color-gris">
-                    ${infoComent.nota_pc}
-                </p>
             </div>
-            <br>
-           `
-           /* <section class="section-btn-edition">
-                <div class="style-btn editar-btn">Editar</div>
-                <div class="style-btn borra-btn">Borrar</div>
-                <div class="style-btn add-note-btn">Agregar nota</div>
-            </section>*/
-        })
-    
-    sectionNotes.append(btnAgregarNota)
-    const meterNota = document.querySelector('.meterNota')
-    btnAgregarNota.addEventListener('click', (e)=> {
-        e.preventDefault();
-        dtFromComent()
+            <hr class="linea-divisora">
+            <div class="content-perifericos">
+                <h4 class="blue-title">Teclado</h4>
+                <div class="periferico">
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Marca</h4>
+                        <p>${objetPc.marcaTeclado}</p>
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Modelo</h4>
+                        <p>${objetPc.modeloTeclado}</p>
+                    </div>
+                    <div class="tex-content-info">
+                        <h4 class="blue-title">Codigo S/N</h4>
+                        <p>${objetPc.sNTecaldo}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        `;
         
-        const idCompu = document.querySelector('.idCompu')
-        idCompu.value = objetPc.idComputador
-        
-        sectionNotes.append(meterNota)
-        meterNota.classList.remove('desactivar')
-
-    })
-
-    meterNota.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        let fronData = new FormData (meterNota);
-        fetch('../db/enviaComentario.php',{
-            method : 'POST',
-            body : fronData
-        })
-            .then(res => res.json())
-            .then (data => {
-                 if (data) {
-                    meterNota.innerHTML = ""
-                    const mosNewNota = document.querySelector('.newNota')
-                    mosNewNota.innerHTML += data
-                 }else if (data == "error"){
-                    console.log(data);
-                 }
+        //const sectorEditInfoPc = document.querySelector('#sectorEditInfoPc')
+        //aca nos permite editar la informacion del pc al darle click al boton de editar, nos mostrara un formulario
+        const btnEdition = document.querySelector('#btnEdition')
+        btnEdition.classList.remove('desactivar')
+            //Botones Internos 
+            const editInfoPc = document.querySelector('#editInfoPc')
+            mainInfoDispositivo.appendChild(btnEdition)
+            editInfoPc.addEventListener('click', (e)=>{
+                e.preventDefault();
+                formEditionPc.classList.remove('desactivar')
+                colocadorInfoForm(objetPc)
+                //sectorEditInfoPc.appendChild(formEditionPc)
             })
-    })
+        //codigo que se encarga de eliminar el dispositivo
+        btnEliminar.addEventListener('click', (e)=>{
+            e.preventDefault();
+            const formEliminarPc = document.querySelector('#formEliminarPc')
+            formEliminarPc.classList.remove('desactivar')
+            const idPcEleminar = document.querySelector('#idPcEleminar')
+            idPcEleminar.value = objetPc.idComputador
+            console.log(objetPc.idComputador);
+            //este codigo nos permite cancelar la eliminacion del dispositivo
+            const cancelarEliminacion = document.querySelector('#cancelarEliminacion')
+            cancelarEliminacion.addEventListener('click', (e)=>{
+                e.preventDefault();
+                idPcEleminar.value = '';
+                formEliminarPc.classList.add('desactivar')
+            })
+        })
 
-    mainInfoDispositivo.appendChild(sectionNotes)
+        const sectionNotes = document.createElement('section')
+        sectionNotes.classList.add('section-notes')
+
+        const titleNota = document.createElement('h2')
+        titleNota.classList.add("color-blanco")
+        titleNota.textContent = "Notas"
+        
+    //<div class="style-btn add-note-btn">Agregar nota</div>
+        const btnAgregarNota = document.createElement('button')
+        btnAgregarNota.classList.add("style-btn", "add-note-btn")
+        btnAgregarNota.innerText = "Agregar Nota"
+        sectionNotes.append(titleNota)
+            console.log(objetPc.comentario);
+
+            objetPc.comentario.forEach(infoComent => {
+                if (infoComent.fecha == null && infoComent.nombre_user == null && infoComent.nota_pc == null) {
+                    return
+                }
+                sectionNotes.innerHTML += `
+                    <div class="card-note">
+                        <div class="info-basic-nota">
+                            <h4 class="blue-title">${infoComent.fecha}</h4>
+                            <div>
+                                <p class="blue-title">Encargado del caso :</p>
+                                <p>${infoComent.nombre_user}</p>
+                            </div>
+                        </div>
+            
+                        <p class="color-gris">
+                            ${infoComent.nota_pc}
+                        </p>
+                    </div>
+                    <br>
+                `
+            /* <section class="section-btn-edition">
+                    <div class="style-btn editar-btn">Editar</div>
+                    <div class="style-btn borra-btn">Borrar</div>
+                    <div class="style-btn add-note-btn">Agregar nota</div>
+                </section>*/
+            })
+        
+        sectionNotes.append(btnAgregarNota)
+        const meterNota = document.querySelector('.meterNota')
+        btnAgregarNota.addEventListener('click', (e)=> {
+            e.preventDefault();
+            dtFromComent()
+            
+            const idCompu = document.querySelector('.idCompu')
+            idCompu.value = objetPc.idComputador
+            
+            sectionNotes.append(meterNota)
+            meterNota.classList.remove('desactivar')
+
+        })
+
+        meterNota.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            let fronData = new FormData (meterNota);
+            fetch('../db/enviaComentario.php',{
+                method : 'POST',
+                body : fronData
+            })
+                .then(res => res.json())
+                .then (data => {
+                    if (data) {
+                        meterNota.innerHTML = ""
+                        const mosNewNota = document.querySelector('.newNota')
+                        mosNewNota.innerHTML += data
+                    }else if (data == "error"){
+                        console.log(data);
+                    }
+                })
+        })
+
+        mainInfoDispositivo.appendChild(sectionNotes)
+    } else if (tipoSolicitud == "impresoraScan"){
+        console.log("impresora xdxdxdxd");
+
+        for (const key in objetPc) {
+            if (objetPc.hasOwnProperty(key)) {
+                if (typeof objetPc[key] === 'undefined') {
+                    objetPc[key] = '';
+                }
+            }
+        }
+
+        mainInfoDispositivo.innerHTML = `
+        <section class="info-dispostivo-section">
+            <div class="code-dispositivo">
+                <h3 class="blue-title">Codigo Inventario</h3>
+                <p>${objetPc.codeInventInt}</p>
+            </div>
+            <div class="info-ubicacion">
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Nombre Oficina</h4>
+                    <p>${objetPc.nameOficina}</p>
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Tipo</h4>
+                    <p>${objetPc.tipoImpresora}</p>
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Marca</h4>
+                    <p>${objetPc.marca}</p>
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">Modelo</h4>
+                    <p>${objetPc.nombreModelo}</p>
+                </div>
+                <div class="tex-content-info">
+                    <h4 class="blue-title">S/N Equipo</h4>
+                    <p>${objetPc.sNImpresora}</p>
+                </div>
+            </div>
+        </section>
+        `
+        const btnEdition = document.querySelector('#btnEdition')
+        btnEdition.classList.remove('desactivar')
+            //Botones Internos 
+            const editInfoPc = document.querySelector('#editInfoPc')
+            mainInfoDispositivo.appendChild(btnEdition)
+            editInfoPc.addEventListener('click', (e)=>{
+                e.preventDefault();
+                formEditionPc.classList.remove('desactivar')
+                colocadorInfoFormScan(objetPc)
+                console.log("me he ejecutado");
+                //sectorEditInfoPc.appendChild(formEditionPc)
+            })
+        //codigo que se encarga de eliminar el dispositivo
+        btnEliminar.addEventListener('click', (e)=>{
+            e.preventDefault();
+            const formEliminarPc = document.querySelector('#formEliminarPc')
+            formEliminarPc.classList.remove('desactivar')
+            const idPcEleminar = document.querySelector('#idPcEleminar')
+            idPcEleminar.value = objetPc.idImpScan
+            console.log(objetPc.idImpScan);
+            //este codigo nos permite cancelar la eliminacion del dispositivo
+            const cancelarEliminacion = document.querySelector('#cancelarEliminacion')
+            cancelarEliminacion.addEventListener('click', (e)=>{
+                e.preventDefault();
+                idPcEleminar.value = '';
+                formEliminarPc.classList.add('desactivar')
+            })
+        })
+
+        // seccion de notas
+        const sectionNotes = document.createElement('section')
+        sectionNotes.classList.add('section-notes')
+
+        const titleNota = document.createElement('h2')
+        titleNota.classList.add("color-blanco")
+        titleNota.textContent = "Notas"
+        
+        //<div class="style-btn add-note-btn">Agregar nota</div>
+        const btnAgregarNota = document.createElement('button')
+        btnAgregarNota.classList.add("style-btn", "add-note-btn")
+        btnAgregarNota.innerText = "Agregar Nota"
+        sectionNotes.append(titleNota)
+
+            objetPc.comentario.forEach(infoComent => {
+                if (infoComent.fecha == null && infoComent.apodo_user == null && infoComent.parrafo == null) {
+                    return
+                }
+                sectionNotes.innerHTML += `
+                    <div class="card-note">
+                        <div class="info-basic-nota">
+                            <h4 class="blue-title">${infoComent.fecha}</h4>
+                            <div>
+                                <p class="blue-title">Encargado del caso :</p>
+                                <p>${infoComent.apodo_user}</p>
+                            </div>
+                        </div>
+            
+                        <p class="color-gris">
+                            ${infoComent.parrafo}
+                        </p>
+                    </div>
+                    <br>
+                `
+            /* <section class="section-btn-edition">
+                    <div class="style-btn editar-btn">Editar</div>
+                    <div class="style-btn borra-btn">Borrar</div>
+                    <div class="style-btn add-note-btn">Agregar nota</div>
+                </section>*/
+                
+            })
+            sectionNotes.append(btnAgregarNota)
+                const meterNota = document.querySelector('.meterNota')
+                btnAgregarNota.addEventListener('click', (e)=> {
+                    e.preventDefault();
+                    dtFromComent()
+                    
+                    const idCompu = document.querySelector('.idCompu')
+                    idCompu.value = objetPc.idImpScan
+                    
+                    sectionNotes.append(meterNota)
+                    meterNota.classList.remove('desactivar')
+ 
+                })
+
+                meterNota.addEventListener('submit', (e)=>{
+                    e.preventDefault();
+                    let fronData = new FormData (meterNota);
+                    fetch('../db/enviaComentarioScanImpre.php',{
+                        method : 'POST',
+                        body : fronData
+                    })
+                        .then(res => res.json())
+                        .then (data => {
+                            if (data) {
+                                meterNota.innerHTML = ""
+                                const mosNewNota = document.querySelector('.newNota')
+                                mosNewNota.innerHTML += data
+                            }else if (data == "error"){
+                                console.log(data);
+                            }
+                        })
+                })
+
+                mainInfoDispositivo.appendChild(sectionNotes)
+
+    }
 }
 /*Funcion que mostrara todas las oficinas*/
 function imprecioDataOficina(dataOfici, typeTarea, nameOneOfi) {
@@ -349,8 +521,13 @@ function imprecioDataOficina(dataOfici, typeTarea, nameOneOfi) {
                 e.preventDefault();
                 contenidoTabla.innerHTML = ''
                 comova = element.nombre_oficna
-                llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', comova)
-                
+                //llamadoDataPhpNew('../../php/db/dataTablePc.php', 'mostrar', comova, '')
+
+                if (cleanUrl === urlPc) {
+                    llamadoDataPhp('../../php/db/dataTablePc.php', 'tablePcFiltrado', comova)
+                } else if(cleanUrl === urlImpresora){
+                    llamadoDataPhp('../../php/db/dataTableImpresora.php', 'tablePcFiltrado', comova)
+                }
                 /*
                 if (cleanUrl == urlPc){
                     llamadoDataPhpNew('../../php/db/dataTablePc.php', 'tablePc', comova)
@@ -474,7 +651,7 @@ function imprecioDataPc(array, queRederizo){
                         totalHeader.classList.add("desactivar")
                         btnControlTablePc.classList.add("desactivar")
                         console.log(objetPc.comentario);
-                        rederHtmlInfoPc(objetPc);
+                        rederHtmlInfoPc(objetPc, "pc");
                     });
                 }
             })
@@ -489,10 +666,11 @@ function imprecioDataPc(array, queRederizo){
                     tipoImpresora : element.tipo_impresora,
                     idOficinaImpre : element.id_oficina_impre,
                     sNImpresora : element.s_n_impresora,
+                    nameOficina : element.nombre_oficna,
                     //comentarios
                     comentario : element.comentarios,
                 }
-                if (element.id_oficina_impre === queRederizo || queRederizo === "") {
+                if (element.nombre_oficna === queRederizo || queRederizo === "") {
                     const cabecaraTableDataListName = document.createElement("div")
                     cabecaraTableDataListName.classList.add("cabecara-table-data__list-name", "especificaciones")
                         //datos
@@ -525,7 +703,7 @@ function imprecioDataPc(array, queRederizo){
                         contenidoTabla.append(cabecaraTableDataListName)
             
                     //Escuchador de eventos
-                    /*
+                    
                     cabecaraTableDataListName.addEventListener('click', function (e) {
                         e.preventDefault();
                         contentPestañaTable.classList.add("desactivar")
@@ -534,9 +712,9 @@ function imprecioDataPc(array, queRederizo){
         
                         totalHeader.classList.add("desactivar")
                         btnControlTablePc.classList.add("desactivar")
-                        console.log(objetPc.comentario);
-                        rederHtmlInfoPc(objetPc);
-                    });*/
+                        //console.log(objetPc.comentario);
+                        rederHtmlInfoPc(objetImpScan, "impresoraScan");
+                    });
                 }
             })
         }
@@ -567,8 +745,13 @@ reloadTablaPc.addEventListener('click', (e)=>{
 
 btnAgregarPC.addEventListener('click', (e)=>{
     e.preventDefault();
-    redirigir('./agregarNewPc.php')
+    if (mostrarInfoPcOrImpresora === "pc") {
+        redirigir('./agregarNewPc.php')
+    } else {
+        redirigir('./agragarImoScam.php')
+    }
 })
+
 //invetarioPestañaPrincipal.php
 
 /*

@@ -91,7 +91,7 @@ session_start();
             </div>
         </section>
         <!--Boton de agregar-->
-        <button class="agregar-equipo" id = "btnAgregarPC">Agregar equipo</button>
+        <button class="agregar-equipo" id = "btnAgregar">Agregar equipo</button>
     </main>
 
     <!--Seccion donde se miestra los la ingormacion del equipo seleccionado!-->

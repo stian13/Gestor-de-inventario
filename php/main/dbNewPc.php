@@ -3,7 +3,6 @@ include ('../db/db.php');
 
 // Obtener datos del formulario
 $invenCode = $_POST['invenCode'];
-//$oficinaActual = $_POST['oficinaActual'];
 $idOfinaSeleccionada = $_POST['idOfinaSeleccionada'];
 $tipoPc = $_POST['tipo-computadora'];
 $marcaPC = $_POST['marcaPC'];
@@ -30,18 +29,17 @@ $marcaTeclado = $_POST['marcaTeclado'];
 $modeloTeclado = $_POST['modeloTeclado'];
 $snTeclado = $_POST['snTeclado'];
 
+$query_agregar_nuevo_pc = "INSERT INTO `computadoras`(`code_invet`, `nombre_pc`, `tipo_pc`, `marca_pc`, `s/n_pc`, `modelo`, `procesador`, `ram`, `tipo_ram`, `almacenamiento`, `tipo_disco`, `so`, `licencia_so`, `office_v`, `licencia_office`, `marca_mause`, `s/n_mouse`, `modelo_muse`, `marca_teclado`, `s/n_tecaldo`, `modelo_teclado`, `id_ofice_pc`, `marca_monitor`, `modelo_monitor`, `s_n_monitor`, `nameUser`) VALUES ('$invenCode','$namePc','$tipoPc','$marcaPC','$snpc','$modeloPc','$cpu','$ram','$tipoRam','$capacidadDisco','$tipoDisco','$nameSO','$sOLicencia','$officeV','$licenciaOffice','$marcMouse','$snMouse','$modeloMouse','$marcaTeclado','$snTeclado','$modeloTeclado','$idOfinaSeleccionada','$marcaMonitor','$modeloMonitor','$sNMonitor', '$nombreUser')";
 
-$query_agregar_nuevo_pc = "INSERT INTO `computadoras`(`code_invet`, `nombre_pc`, `tipo_pc`, `marca_pc`, `s/n_pc`, `modelo`, `procesador`, `ram`, `tipo_ram`, `almacenamiento`, `tipo_disco`, `so`, `licencia_so`, `office_v`, `licencia_office`, `marca_mause`, `s/n_mouse`, `modelo_muse`, `marca_teclado`, `s/n_tecaldo`, `modelo_teclado`, `id_ofice_pc`, `marca_monitor`, `modelo_monitor`, `s/n_monitor`) VALUES ('$invenCode','$namePc','$tipoPc','$marcaPC','$snpc','$modeloPc','$cpu','$ram','$tipoRam','$capacidadDisco','$tipoDisco','$nameSO','$sOLicencia','$officeV','$licenciaOffice','$marcMouse','$snMouse','$modeloMouse','$marcaTeclado','$snTeclado','$modeloTeclado','$idOfinaSeleccionada', '$marcaMonitor', '$modeloMonitor', '$sNMonitor')";
+$se_ejecuto = ""; // Inicializando la variable
 
-#$ejecutar_consulta = $mysqli -> query($query_agregar_nuevo_pc);
-
-$se_ejecuto;
-if ($mysqli -> query($query_agregar_nuevo_pc) === true) {
+if ($mysqli->query($query_agregar_nuevo_pc) === true) {
     $se_ejecuto = "seagrego";
-}else {
-    $se_ejecuto = "noseagrego";
+} else {
+    $se_ejecuto = "noseagrego: " . $mysqli->error; // Mostrar el error en caso de fallo
 }
 
+echo $se_ejecuto;
 ?>
 
 <!DOCTYPE html>

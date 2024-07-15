@@ -65,12 +65,16 @@ body{
 .info-dispostivo-section .info-ubicacion{
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .tex-content-info{
     text-align: center;
+}
+.tex-content-info .list-ofice{
+    display: flex;
+    flex-direction: column;
 }
 
 .blue-title{
